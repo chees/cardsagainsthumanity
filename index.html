@@ -3,22 +3,39 @@
 </head>
 
 <body>
-  {{> games}}
+  <header>
+    <h1><a href="/">Cards Against Humanity</a></h1>
+  </header>
   <!--
   {{> name}}
   {{> players}}
   {{> controls}}
   -->
   <!--{{> questions}}-->
+  <footer>
+    <a href="/about">About</a>
+  </footer>
 </body>
+
+<template name="home">
+  {{> games}}
+</template>
+
+<template name="about">
+  TODO: about
+</template>
 
 <template name="games">
   Games:
   <ul>
     {{#each game}}
-      <li>{{this._id}}</li>
+      <li><a href="{{pathFor 'game' this._id}}">{{this._id}}</a></li>
     {{/each}}
   </ul>
+</template>
+
+<template name="game">
+  Status: {{status}}
 </template>
 
 <template name="name">
