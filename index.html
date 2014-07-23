@@ -1,0 +1,56 @@
+<head>
+  <title>Cards Against Humanity</title>
+</head>
+
+<body>
+  {{> name}}
+  {{> players}}
+  {{> controls}}
+  <!--{{> questions}}-->
+</body>
+
+<template name="name">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name">
+  </div>
+</template>
+
+<template name="players">
+  Players:
+  <ul>
+    {{#each player}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="controls">
+  {{#unless started}}
+    <div>
+      <button>Start</button>
+    </div>
+  {{/unless}}
+</template>
+
+<template name="questions">
+  Questions:
+  <ul>
+    {{#each question}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
+
+<!--
+<template name="cursors">
+  {{#each cursor}}
+    {{#if myCursor}}
+  	  <div class="cursor mine" style="-webkit-transform:translateX({{x}}px) translateY({{y}}px)">{{name}}</div>
+    {{else}}
+      <div class="cursor" style="-webkit-transform:translateX({{x}}px) translateY({{y}}px)">{{name}}</div>
+    {{/if}}
+  {{/each}}
+</template>
+-->
+
