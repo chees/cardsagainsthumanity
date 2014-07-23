@@ -12,10 +12,9 @@ Template.cursors.name = function() {
 };
 */
 
-
+/*
 Template.name.events({
   'keyup input': function(e) {
-    /* TODO
     var val = $(e.target).val();
     var sessionId = Meteor.connection._lastSessionId;
     if (val) {
@@ -27,9 +26,9 @@ Template.name.events({
         Players.insert({_id: sessionId, name: val})
       }
     }
-    */
   }
 });
+*/
 
 /*
 Template.players.player = function() {
@@ -44,6 +43,7 @@ Template.games.game = function() {
   return Games.find();
 };
 
+/*
 Template.controls.started = function() {
   return false; // TODO
 };
@@ -52,6 +52,7 @@ Template.controls.events({
     console.log('click');
   }
 });
+*/
 
 /*
 Template.questions.question = function() {

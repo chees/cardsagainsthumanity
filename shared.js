@@ -15,3 +15,9 @@ Router.map(function() {
     data: function() { return Games.findOne(this.params._id); }
   });
 });
+
+Router.configure({
+  layoutTemplate: 'layout',
+  notFoundTemplate: 'notFound',
+  loadingTemplate: 'loading'
+});
