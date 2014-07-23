@@ -15,9 +15,11 @@ Template.cursors.name = function() {
 
 Template.name.events({
   'keyup input': function(e) {
+    /* TODO
     var val = $(e.target).val();
     var sessionId = Meteor.connection._lastSessionId;
     if (val) {
+      //Games.update()
       var p = Players.findOne(sessionId);
       if (p) {
         Players.update(sessionId, {$set: {name: val}});
@@ -25,15 +27,21 @@ Template.name.events({
         Players.insert({_id: sessionId, name: val})
       }
     }
+    */
   }
 });
 
-
+/*
 Template.players.player = function() {
   return Players.find();
 };
 Template.players.name = function() {
   return this.name;
+};
+*/
+
+Template.games.game = function() {
+  return Games.find();
 };
 
 Template.controls.started = function() {
@@ -45,12 +53,14 @@ Template.controls.events({
   }
 });
 
+/*
 Template.questions.question = function() {
   return Questions.find();
 };
 Template.questions.name = function() {
   return this.name;
 };
+*/
 
 /*
 UI.body.events({

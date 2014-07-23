@@ -3,11 +3,23 @@
 </head>
 
 <body>
+  {{> games}}
+  <!--
   {{> name}}
   {{> players}}
   {{> controls}}
+  -->
   <!--{{> questions}}-->
 </body>
+
+<template name="games">
+  Games:
+  <ul>
+    {{#each game}}
+      <li>{{this._id}}</li>
+    {{/each}}
+  </ul>
+</template>
 
 <template name="name">
   <div>

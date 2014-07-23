@@ -1,5 +1,7 @@
-Players = new Meteor.Collection('players');
+//Players = new Meteor.Collection('players');
 
-Questions = new Meteor.Collection('questions');
+//Questions = new Meteor.Collection('questions');
 
-Answers = new Meteor.Collection('answers');
+//Answers = new Meteor.Collection('answers');
+
+Games = new Meteor.Collection('games');
