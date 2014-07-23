@@ -1,4 +1,12 @@
 <template name="game">
   Status: {{status}}
+  <div>
+    Players:
+    <ul>
+      {{#each players}}
+        <li>{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 

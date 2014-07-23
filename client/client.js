@@ -43,6 +43,7 @@ Template.games.game = function() {
   return Games.find();
 };
 
+
 /*
 Template.controls.started = function() {
   return false; // TODO
