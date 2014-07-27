@@ -1,16 +1,3 @@
-/*
-Template.cursors.cursor = function() {
-  return Cursors.find();
-};
-
-Template.cursors.myCursor = function() {
-  return this._id === Meteor.connection._lastSessionId;
-};
-
-Template.cursors.name = function() {
-  return this.name;
-};
-*/
 
 /*
 Template.name.events({
@@ -39,26 +26,44 @@ Template.players.name = function() {
 };
 */
 
+Template.createGame.events({
+  'click button': function(e) {
+    Games.insert({
+      status: 'setup',
+      questions: getDefaultQuestions(),
+      answers: getDefaultAnswers(),
+      players: [],
+      selectedAnswers: [],
+      czar: 0
+    }, function(error, id) {
+      if (id) {
+        Router.go('game', {_id: id});
+      }
+    });
+  }
+});
+
+
 Template.games.games = function() {
   return Games.find();
 };
+
+
 
 Template.game.showNameForm = function() {
   // When the collection isn't loaded yet, this seems to be window:
   if (this === window) return false;
   if (this.status === 'started') return false;
 
-  var sessionId = Meteor.connection._lastSessionId;
-  for (var i = 0; i < this.players.length; i++) {
-    if (this.players[i].sessionId === sessionId)
-      return false;
-  }
-
-  return true;
+  return getCurrentPlayer(this.players) === null;
 };
 
-Template.game.showStartButton = function() {
-  return this.status === 'setup';
+Template.game.isStarted = function() {
+  return this.status === 'started';
+};
+
+Template.game.question = function() {
+  return this.questions[0];
 };
 
 Template.game.events({
@@ -68,56 +73,40 @@ Template.game.events({
     var name = $('input[name="name"]').val();
     if (name.trim() === '') return;
 
-    var sessionId = Meteor.connection._lastSessionId;
-
-    for (var i = 0; i < this.players.length; i++) {
-      if (this.players[i].sessionId == sessionId) {
-        // Player already joined this game
-        return;
-      }
+    if (getCurrentPlayer(this.players) !== null) {
+      // Player already joined this game
+      return;
     }
-    
-    var player = { sessionId: sessionId, name: name };
+
+    var player = {
+      sessionId: Meteor.connection._lastSessionId,
+      name: name,
+      score: 0,
+      answers: []
+    };
     Games.update(this._id, {$push: { players: player }});
   },
   'click button[name="start"]': function(e) {
+    // TODO give 10 answers to each player
     Games.update(this._id, {$set: { status: 'started' }});
   }
 });
 
-/*
-Template.controls.started = function() {
-  return false; // TODO
-};
-Template.controls.events({
-  'click button': function(e) {
-    console.log('click');
-  }
-});
-*/
 
-/*
-Template.questions.question = function() {
-  return Questions.find();
+Template.hand.answers = function() {
+  var player = getCurrentPlayer(this.players);
+  if (player === null) return;
+  return player.answers;
 };
-Template.questions.name = function() {
-  return this.name;
-};
-*/
 
-/*
-UI.body.events({
-  'mousemove': function(e) {
-    //console.log('hier');
-    var x = e.clientX;
-    var y = e.clientY;
-    var sessionId = Meteor.connection._lastSessionId;
-    if (sessionId == null) return;
-    var c = Cursors.findOne(sessionId);
-    if (c)
-      Cursors.update(sessionId, {$set: {x: x, y: y}})
-    else
-      Cursors.insert({_id: sessionId, x: x, y: y})
+
+function getCurrentPlayer(players) {
+  var sessionId = Meteor.connection._lastSessionId;
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].sessionId === sessionId) {
+      return players[i];
+    }
   }
-});
-*/
+  return null;
+}
+

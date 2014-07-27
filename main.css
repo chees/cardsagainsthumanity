@@ -6,17 +6,12 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-header {
-  margin-bottom: 10px;
+header,
+footer {
   padding: 10px;
+  background-color: #eee;
 }
 
 .main {
   padding: 10px;
-}
-
-footer {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #eee;
 }

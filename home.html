@@ -1,15 +1,23 @@
 <template name="home">
+  {{> createGame}}
   {{> games}}
 </template>
 
+<template name="createGame">
+  <div>
+    <button>Create a new game</button>
+  </div>
+</template>
 
 <template name="games">
-  Games:
-  <ul>
-    {{#each games}}
-      <li><a href="{{pathFor 'game' this._id}}">{{this._id}}</a></li>
-    {{/each}}
-  </ul>
+  <div>
+    Games:
+    <ul>
+      {{#each games}}
+        <li><a href="{{pathFor 'game' this._id}}">{{this._id}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 

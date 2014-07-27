@@ -17,8 +17,27 @@
     </form>
   {{/if}}
 
-  {{#if showStartButton}}
+  {{#if isStarted}}
+    <div>
+      Question:
+      <strong>{{question}}</strong>
+    </div>
+
+    {{>hand}}
+
+  {{else}}
     <button name="start">Start the game</button>
   {{/if}}
+
 </template>
 
+<template name="hand">
+  <div>
+    Your hand:
+    <ul>
+      {{#each answers}}
+        <li>{{answer}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
