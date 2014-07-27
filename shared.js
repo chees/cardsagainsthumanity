@@ -9,7 +9,8 @@ Router.map(function() {
     data: function() {
       return Games.findOne(this.params._id);
     },
-    onBeforeAction: function(e) {      
+    onBeforeAction: function(e) {
+      /*
       var sessionId = Meteor.connection._lastSessionId;
 
       var players = this.data().players;
@@ -22,6 +23,7 @@ Router.map(function() {
       console.log('adding new player to game');
       var player = { sessionId: sessionId, name: 'naampje' };
       Games.update(this.params._id, {$push: { players: player }});
+      */
     }
   });
 });

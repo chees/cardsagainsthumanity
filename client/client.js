@@ -39,10 +39,51 @@ Template.players.name = function() {
 };
 */
 
-Template.games.game = function() {
+Template.games.games = function() {
   return Games.find();
 };
 
+Template.game.showNameForm = function() {
+  // When the collection isn't loaded yet, this seems to be window:
+  if (this === window) return false;
+  if (this.status === 'started') return false;
+
+  var sessionId = Meteor.connection._lastSessionId;
+  for (var i = 0; i < this.players.length; i++) {
+    if (this.players[i].sessionId === sessionId)
+      return false;
+  }
+
+  return true;
+};
+
+Template.game.showStartButton = function() {
+  return this.status === 'setup';
+};
+
+Template.game.events({
+  'submit': function(e) {
+    e.preventDefault();
+    
+    var name = $('input[name="name"]').val();
+    if (name.trim() === '') return;
+
+    var sessionId = Meteor.connection._lastSessionId;
+
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].sessionId == sessionId) {
+        // Player already joined this game
+        return;
+      }
+    }
+    
+    var player = { sessionId: sessionId, name: name };
+    Games.update(this._id, {$push: { players: player }});
+  },
+  'click button[name="start"]': function(e) {
+    Games.update(this._id, {$set: { status: 'started' }});
+  }
+});
 
 /*
 Template.controls.started = function() {

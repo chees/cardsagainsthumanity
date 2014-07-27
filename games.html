@@ -1,5 +1,6 @@
 <template name="game">
   Status: {{status}}
+
   <div>
     Players:
     <ul>
@@ -8,5 +9,16 @@
       {{/each}}
     </ul>
   </div>
+
+  {{#if showNameForm}}
+    <form>
+      <input name="name" placeholder="Name">
+      <input type="submit" value="Join">
+    </form>
+  {{/if}}
+
+  {{#if showStartButton}}
+    <button name="start">Start the game</button>
+  {{/if}}
 </template>
 

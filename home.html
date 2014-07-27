@@ -6,7 +6,7 @@
 <template name="games">
   Games:
   <ul>
-    {{#each game}}
+    {{#each games}}
       <li><a href="{{pathFor 'game' this._id}}">{{this._id}}</a></li>
     {{/each}}
   </ul>

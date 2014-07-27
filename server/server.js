@@ -4,20 +4,22 @@ Meteor.startup(function () {
   //Players.remove({});
   //Questions.remove({});
   //Answers.remove({});
-  Games.remove({});
+  //Games.remove({});
 
   initGame();
 });
 
 function initGame() {
-  Games.insert({
-    status: 'setup',
-    questions: getDefaultQuestions(),
-    answers: getDefaultAnswers(),
-    players: [],
-    selectedAnswers: [],
-    czar: 0
-  });
+  if (Games.find().count() === 0) {
+    Games.insert({
+      status: 'setup',
+      questions: getDefaultQuestions(),
+      answers: getDefaultAnswers(),
+      players: [],
+      selectedAnswers: [],
+      czar: 0
+    });
+  }
 }
 
 function getDefaultQuestions() {
