@@ -1,9 +1,6 @@
 console.log('on the server');
 
 Meteor.startup(function () {
-  //Players.remove({});
-  //Questions.remove({});
-  //Answers.remove({});
   //Games.remove({});
 
   initGame();
