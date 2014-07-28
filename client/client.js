@@ -87,14 +87,14 @@ Template.game.events({
     Games.update(this._id, {$push: { players: player }});
   },
   'click button[name="start"]': function(e) {
-    // TODO give 10 answers to each player
-    Games.update(this._id, {$set: { status: 'started' }});
+    Meteor.call('startGame', this._id);
   }
 });
 
 
 Template.hand.answers = function() {
   var player = getCurrentPlayer(this.players);
+  console.log('player', player);
   if (player === null) return;
   return player.answers;
 };
