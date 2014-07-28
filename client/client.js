@@ -1,41 +1,6 @@
-
-/*
-Template.name.events({
-  'keyup input': function(e) {
-    var val = $(e.target).val();
-    var sessionId = Meteor.connection._lastSessionId;
-    if (val) {
-      //Games.update()
-      var p = Players.findOne(sessionId);
-      if (p) {
-        Players.update(sessionId, {$set: {name: val}});
-      } else {
-        Players.insert({_id: sessionId, name: val})
-      }
-    }
-  }
-});
-*/
-
-/*
-Template.players.player = function() {
-  return Players.find();
-};
-Template.players.name = function() {
-  return this.name;
-};
-*/
-
 Template.createGame.events({
   'click button': function(e) {
-    Games.insert({
-      status: 'setup',
-      questions: getDefaultQuestions(),
-      answers: getDefaultAnswers(),
-      players: [],
-      selectedAnswers: [],
-      czar: 0
-    }, function(error, id) {
+    Games.insert(getNewGame(), function(error, id) {
       if (id) {
         Router.go('game', {_id: id});
       }
@@ -94,7 +59,6 @@ Template.game.events({
 
 Template.hand.answers = function() {
   var player = getCurrentPlayer(this.players);
-  console.log('player', player);
   if (player === null) return;
   return player.answers;
 };

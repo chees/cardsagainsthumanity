@@ -3,22 +3,10 @@ console.log('on the server');
 Meteor.startup(function () {
   //Games.remove({});
 
-  initGame();
-});
-
-function initGame() {
   if (Games.find().count() === 0) {
-    Games.insert({
-      status: 'setup',
-      questions: _.shuffle(getDefaultQuestions()),
-      answers: _.shuffle(getDefaultAnswers()),
-      players: [],
-      selectedAnswers: [],
-      czar: 0
-    });
+    Games.insert(getNewGame());
   }
-}
-
+});
 
 Meteor.methods({
   startGame: function (id) {

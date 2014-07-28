@@ -1,14 +1,24 @@
 Games = new Meteor.Collection('games');
 
+getNewGame = function() {
+  return {
+    status: 'setup',
+    questions: _.shuffle(getDefaultQuestions()),
+    answers: _.shuffle(getDefaultAnswers()),
+    players: [],
+    selectedAnswers: [],
+    czar: 0
+  }
+};
 
-getDefaultQuestions = function() {
+function getDefaultQuestions() {
   return [
     "How did I lose my virginity?",
     "Why can't I sleep at night?"
   ];
 };
 
-getDefaultAnswers = function() {
+function getDefaultAnswers() {
   return [
     "Being on fire.",
     "Racism.",
