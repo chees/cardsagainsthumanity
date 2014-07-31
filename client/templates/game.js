@@ -1,19 +1,3 @@
-Template.createGame.events({
-  'click button': function(e, t) {
-    Games.insert(getNewGame(), function(error, id) {
-      if (id) {
-        Router.go('game', {_id: id});
-      }
-    });
-  }
-});
-
-
-Template.games.games = function() {
-  return Games.find();
-};
-
-
 Template.game.isLoggedIn = function() {
   return Meteor.user();
 };
@@ -76,12 +60,14 @@ Template.hand.answers = function() {
 Template.hand.events({
   'click a': function(e, t) {
     e.preventDefault();
-    console.log(t);
-    var answer = e.target.innerText
-    // TODO how do I get the current game and player number?
-    Meteor.call('selectAnswer');
+    var gameId = t.data._id;
+    var playerId = Meteor.user()._id;
+    var answer = e.target.innerText;
+    Meteor.call('selectAnswer', gameId, playerId, answer);
   }
 });
+
+
 
 function getCurrentPlayer(players) {
   var user = Meteor.user();
@@ -94,4 +80,3 @@ function getCurrentPlayer(players) {
   }
   return null;
 }
-

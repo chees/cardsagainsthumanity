@@ -34,7 +34,18 @@ Meteor.methods({
       players: p
     }});
   },
-  selectAnswer: function() {
-    console.log('TODO selectAnswer');
+  selectAnswer: function(gameId, playerId, answer) {
+    // TODO check somehow that you can only set your own answer?
+    console.log('selectAnswer', gameId, playerId, answer);
+    var game = Games.findOne(gameId);
+    var pos = getPlayerPosition(game, playerId);
+    game.selectedAnswers[pos] = answer;
   }
 });
+
+function getPlayerPosition(game, playerId) {
+  for (var i = 0; i < game.players.length; i++) {
+    if (game.players[i].id === playerId)
+      return i;
+  }
+}
