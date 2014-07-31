@@ -10,11 +10,16 @@
     </ul>
   </div>
 
-  {{#if showNameForm}}
-    <form>
-      <input name="name" placeholder="Name">
-      <input type="submit" value="Join">
-    </form>
+  {{#unless isLoggedIn}}
+    You need to log in to join a game.
+  {{/unless}}
+
+  {{#if canJoin}}
+    <button name="join">Join</button>
+  {{/if}}
+
+  {{#if canStart}}
+    <button name="start">Start the game</button>
   {{/if}}
 
   {{#if isStarted}}
@@ -24,9 +29,6 @@
     </div>
 
     {{>hand}}
-
-  {{else}}
-    <button name="start">Start the game</button>
   {{/if}}
 </template>
 
@@ -35,7 +37,7 @@
     Your hand:
     <ul>
       {{#each answers}}
-        <li>{{this}}</li>
+        <li><a href="#">{{this}}</a></li>
       {{/each}}
     </ul>
   </div>

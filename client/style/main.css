@@ -15,3 +15,8 @@ footer {
 .main {
   padding: 10px;
 }
+
+.login {
+  float: right;
+  padding: 10px;
+}

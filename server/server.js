@@ -33,5 +33,8 @@ Meteor.methods({
       answers: a,
       players: p
     }});
+  },
+  selectAnswer: function() {
+    console.log('TODO selectAnswer');
   }
 });

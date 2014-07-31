@@ -8,7 +8,7 @@ getNewGame = function() {
     players: [],
     selectedAnswers: [],
     czar: 0
-  }
+  }// TODO creationDate?
 };
 
 function getDefaultQuestions() {
