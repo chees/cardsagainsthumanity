@@ -68,12 +68,13 @@ Meteor.methods({
     // Update score
     game.players[playerPos].score++;
 
-    // Take selected answers from players
     for (var i = 0; i < game.players.length; i++) {
+      // Take selected answers from players
       removeOne(game.selectedAnswers[i], game.players[i].answers);
     }
 
-    // TODO give new answers to players
+    // give new answers to players
+    giveAnswersToPlayer(game);
 
     // Empty selectedAnswers
     game.selectedAnswers = [];
@@ -103,4 +104,11 @@ function everybodyAnswered(game) {
 /** Removes only one item (not all) from the given list. */
 function removeOne(item, list) {
   list.splice(list.indexOf(item), 1);
+}
+
+function giveAnswersToPlayer(game) {
+  _.each(game.players, function(p) {
+    while (p.answers.length < 10)
+      p.answers.push(game.answers.pop());
+  });
 }
