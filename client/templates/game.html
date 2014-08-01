@@ -5,7 +5,12 @@
     Players:
     <ul>
       {{#each players}}
-        <li>{{name}}</li>
+        <li>
+          {{name}} {{score}}
+          {{#if selectedAnswer}}
+            <i>answered</i>
+          {{/if}}
+        </li>
       {{/each}}
     </ul>
   </div>
@@ -22,14 +27,32 @@
     <button name="start">Start the game</button>
   {{/if}}
 
-  {{#if isStarted}}
+  {{#unless isSetup}}
     <div>
       Question:
       <strong>{{question}}</strong>
     </div>
 
-    {{>hand}}
-  {{/if}}
+    {{#if isSelectingWinner}}
+      {{>answers}}
+    {{/if}}
+
+    {{#if isJoined}}
+      {{>hand}}
+    {{/if}}
+
+  {{/unless}}
+</template>
+
+<template name="answers">
+  <div>
+    Answers:
+    <ul>
+      {{#each selectedAnswers}}
+        <li><a href="#" data-pos="{{playerPos}}">{{answer}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="hand">

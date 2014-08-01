@@ -2,7 +2,7 @@ Games = new Meteor.Collection('games');
 
 getNewGame = function() {
   return {
-    status: 'setup',
+    status: 'setup', // setup, answering, selectingWinner
     questions: _.shuffle(getDefaultQuestions()),
     answers: _.shuffle(getDefaultAnswers()),
     players: [],

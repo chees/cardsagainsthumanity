@@ -1,3 +1,12 @@
+Template.game.players = function() {
+  if (this === window) return;
+  var players = this.players; // TODO should I clone instead?
+  for (var i = 0; i < players.length; i++) {
+    players[i].selectedAnswer = this.selectedAnswers[i];
+  }
+  return players;
+};
+
 Template.game.isLoggedIn = function() {
   return Meteor.user();
 };
@@ -18,13 +27,23 @@ Template.game.canStart = function() {
     this.status == 'setup';
 };
 
-Template.game.isStarted = function() {
-  return this.status === 'started';
+Template.game.isSetup = function() {
+  return this.status === 'setup';
 };
 
 Template.game.question = function() {
   return this.questions[0];
 };
+
+Template.game.isJoined = function() {
+  return getCurrentPlayer(this.players) != null;
+};
+
+Template.game.isSelectingWinner = function() {
+  return this.status === 'selectingWinner';
+};
+
+// TODO set a listener on the answer so select the winner
 
 Template.game.events({
   'click button[name="join"]': function(e, t) {
@@ -50,6 +69,23 @@ Template.game.events({
   }
 });
 
+
+Template.answers.selectedAnswers = function() {
+  var answers = [];
+  for (var i = 0; i < this.selectedAnswers.length; i++) {
+    answers.push({answer: this.selectedAnswers[i], playerPos: i});
+  }
+  return _.shuffle(answers); // To prevent cheating this should actually be done on the server
+};
+
+Template.answers.events({
+  'click a': function(e, t) {
+    e.preventDefault();
+    var gameId = t.data._id;
+    var playerPos = $(e.target).attr('data-pos');
+    Meteor.call('selectWinner', gameId, playerPos);
+  }
+});
 
 Template.hand.answers = function() {
   var player = getCurrentPlayer(this.players);
