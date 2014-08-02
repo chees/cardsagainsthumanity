@@ -5,12 +5,15 @@ Router.map(function() {
     path: '/games/:_id',
     data: function() {
       return Games.findOne(this.params._id);
-    }
+    }//,
+    //waitOn: function() {
+    //  return Meteor.subscribe('games', this.params._id));
+    //}
   });
 });
 
 Router.configure({
-  layoutTemplate: 'layout' //,
-  //notFoundTemplate: 'notFound',
-  //loadingTemplate: 'loading'
+  layoutTemplate: 'layout',
+  notFoundTemplate: 'notFound',
+  loadingTemplate: 'loading'
 });
