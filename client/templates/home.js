@@ -3,7 +3,7 @@ Template.createGame.events({
     Games.insert(getNewGame(), function(error, id) {
       if (id) {
         Router.go('game', {_id: id});
-      }
+      } // TODO else handle error?
     });
   }
 });

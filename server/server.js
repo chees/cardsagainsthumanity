@@ -1,4 +1,7 @@
-console.log('on the server');
+Meteor.startup(function () {
+  //Games.remove({});
+});
+
 
 Meteor.publish('games', function () {
   return Games.find({});
@@ -8,19 +11,38 @@ Meteor.publish('game', function(gameId) {
   return Games.find({_id: gameId});
 });
 
-Meteor.startup(function () {
-  //Games.remove({});
-});
+
 
 Meteor.methods({
+  joinGame: function(gameId) {
+    var game = Games.findOne(gameId);
+    if (game.status !== 'setup') {
+      return;
+    }
+
+    var user = Meteor.user();
+
+    var playerIds = _.pluck(game.players, 'id');
+    if (_.contains(playerIds, user._id)) {
+      // User already joined this game
+      return;
+    }
+
+    var player = {
+      id: user._id,
+      name: user.profile.name,
+      score: 0,
+      answers: []
+    };
+    Games.update(gameId, {$push: { players: player }});
+  },
   startGame: function (id) {
     var game = Games.findOne(id);
     if (game.status !== 'setup') {
       return;
     }
-    // TODO check to make sure you can only start your own game
 
-    console.log('Starting game ' + id);
+    // TODO check to make sure you can only start a game where you're the creator
 
     var a = game.answers;
     var p = game.players;
@@ -40,6 +62,7 @@ Meteor.methods({
   },
   selectAnswer: function(gameId, playerId, answer) {
     // TODO check somehow that you can only set your own answer?
+    // TODO user Meteor.user() instead of passing the playerId
     console.log('selectAnswer', gameId, playerId, answer);
 
     var game = Games.findOne(gameId);

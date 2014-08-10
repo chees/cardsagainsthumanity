@@ -9,6 +9,7 @@ Cards Against Humanity is available under a [Creative Commons BY-NC-SA 2.0](http
 TODO
 - figure out how iron router wait-on stuff works
 - figure out how Meteor.subscribe, autopublish and insecure work
+- can only create a game when you are logged in
 - styling (bootstrap or paper?)
 - show which answer you selected
 - homepage with explanation

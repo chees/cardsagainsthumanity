@@ -38,26 +38,10 @@ Template.game.isSelectingWinner = function() {
   return this.status === 'selectingWinner';
 };
 
-// TODO set a listener on the answer so select the winner
-
 Template.game.events({
   'click button[name="join"]': function(e, t) {
     e.preventDefault();
-    
-    var name = Meteor.user().profile.name;
-
-    if (getCurrentPlayer(this.players) !== null) {
-      // Player already joined this game
-      return;
-    }
-
-    var player = {
-      id: Meteor.user()._id,
-      name: name,
-      score: 0,
-      answers: []
-    };
-    Games.update(this._id, {$push: { players: player }});
+    Meteor.call('joinGame', this._id);
   },
   'click button[name="start"]': function(e, t) {
     Meteor.call('startGame', this._id);
@@ -70,7 +54,8 @@ Template.answers.selectedAnswers = function() {
   for (var i = 0; i < this.selectedAnswers.length; i++) {
     answers.push({answer: this.selectedAnswers[i], playerPos: i});
   }
-  return _.shuffle(answers); // To prevent cheating this should actually be done on the server
+  // To prevent cheating this should actually be done on the server:
+  return _.shuffle(answers);
 };
 
 Template.answers.events({
