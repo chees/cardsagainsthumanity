@@ -17,3 +17,5 @@ TODO
 - handle pick 2 questions
 - handle take 2 pick 3 questions
 - finish or delete games
+- figure out if I should use Meteor's Session somewhere
+- figure out what Deps.autorun does

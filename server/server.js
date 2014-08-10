@@ -1,5 +1,13 @@
 console.log('on the server');
 
+Meteor.publish('games', function () {
+  return Games.find({});
+});
+
+Meteor.publish('game', function(gameId) {
+  return Games.find({_id: gameId});
+});
+
 Meteor.startup(function () {
   //Games.remove({});
 });

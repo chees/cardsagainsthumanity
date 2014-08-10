@@ -1,5 +1,4 @@
 Template.game.players = function() {
-  if (this === window) return;
   var players = this.players; // TODO should I clone instead?
   for (var i = 0; i < players.length; i++) {
     players[i].selectedAnswer = this.selectedAnswers[i];
@@ -12,17 +11,13 @@ Template.game.isLoggedIn = function() {
 };
 
 Template.game.canJoin = function() {
-  // When the collection isn't loaded yet, this seems to be window:
-  return this !== window &&
-    Meteor.user() != null &&
+  return Meteor.user() != null &&
     getCurrentPlayer(this.players) == null &&
     this.status == 'setup';
 };
 
 Template.game.canStart = function() {
-  // When the collection isn't loaded yet, 'this' seems to be window:
-  return this !== window &&
-    Meteor.user() != null &&
+  return Meteor.user() != null &&
     getCurrentPlayer(this.players) != null &&
     this.status == 'setup';
 };
