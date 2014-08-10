@@ -6,10 +6,6 @@ Template.game.players = function() {
   return players;
 };
 
-Template.game.isLoggedIn = function() {
-  return Meteor.user();
-};
-
 Template.game.canJoin = function() {
   return Meteor.user() != null &&
     getCurrentPlayer(this.players) == null &&

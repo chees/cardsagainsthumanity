@@ -5,7 +5,11 @@
 
 <template name="createGame">
   <div>
-    <button>Create a new game</button>
+    {{#if isLoggedIn}}
+      <button>Create a new game</button>
+    {{else}}
+      Log in to start a game.
+    {{/if}}
   </div>
 </template>
 
