@@ -2,19 +2,13 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {},
-      "bootstrap3-less": {}
+      "iron-router": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.8.2",
         "commit": "05415a8891ea87a00fb1e2388585f2ca5a38e0da"
-      },
-      "bootstrap3-less": {
-        "git": "https://github.com/simison/bootstrap3-less",
-        "tag": "v0.2.1",
-        "commit": "dc94a51ed00d7de6d6f2b6d65107a876d849ad61"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

@@ -7,6 +7,4 @@ standard-app-packages
 iron-router
 accounts-google
 accounts-ui
-less
-bootstrap3-less
 polymer
