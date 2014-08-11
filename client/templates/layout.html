@@ -7,15 +7,18 @@
   <div class="login">
     {{> loginButtons align="right"}}
   </div>
-  <header>
-    <h1><a href="/">Cards Against Humanity</a></h1>
-  </header>
-  <section class="main">
+  <core-header-panel>
+    <core-toolbar>
+      <paper-icon-button icon="home"></paper-icon-button>
+      <span flex>Cards Against Humanity</span>
+    </core-toolbar>
     {{> yield}}
-  </section>
+  </core-header-panel>
+  <!--
   <footer>
     <a href="/about">About</a>
   </footer>
+  -->
 </template>
 
 <template name="loading">

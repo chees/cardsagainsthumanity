@@ -39,8 +39,22 @@ body {
   -webkit-touch-callout: none;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  margin: 0;
+  padding: 0;
 }
 
+core-header-panel {
+  background: white;
+  /* height: 100% fails here on some browsers */
+  height: 100vh;
+  width: 100vw;
+}
+
+core-toolbar {
+  color: #f1f1f1;
+  fill: #f1f1f1;
+  background: #4285f4;
+}
 
 paper-button {
   margin: 1em;
