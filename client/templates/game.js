@@ -35,11 +35,11 @@ Template.game.isSelectingWinner = function() {
 };
 
 Template.game.events({
-  'click button[name="join"]': function(e, t) {
+  'click #join': function(e, t) {
     e.preventDefault();
     Meteor.call('joinGame', this._id);
   },
-  'click button[name="start"]': function(e, t) {
+  'click #start': function(e, t) {
     Meteor.call('startGame', this._id);
   }
 });

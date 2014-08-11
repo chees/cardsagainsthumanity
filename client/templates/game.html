@@ -20,11 +20,11 @@
   {{/unless}}
 
   {{#if canJoin}}
-    <button name="join" class="btn btn-default">Join</button>
+    <paper-button raisedButton class="colored" label="Join" id="join"></paper-button>
   {{/if}}
 
   {{#if canStart}}
-    <button name="start" class="btn btn-default">Start the game</button>
+    <paper-button raisedButton class="colored" label="Start the game" id="start"></paper-button>
   {{/if}}
 
   {{#unless isSetup}}
