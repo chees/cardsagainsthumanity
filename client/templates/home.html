@@ -6,7 +6,8 @@
 <template name="createGame">
   <div>
     {{#if isLoggedIn}}
-      <button class="btn btn-default">Create a new game</button>
+      <!--<button class="btn btn-default">Create a new game</button>-->
+      <paper-button raisedButton class="colored" label="New game"></paper-button>
     {{else}}
       Log in to start a game.
     {{/if}}
