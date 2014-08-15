@@ -19,3 +19,4 @@ TODO
 - finish or delete games
 - figure out if I should use Meteor's Session somewhere
 - figure out what Deps.autorun does
+- select better colors: http://www.google.com/design/spec/style/color.html#color-ui-color-palette

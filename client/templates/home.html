@@ -14,11 +14,24 @@
 </template>
 
 <template name="games">
-  <div>
-    Games:
+  <div class="games">
+    Existing games:
     <ul>
       {{#each games}}
-        <li><a href="{{pathFor 'game' this._id}}">{{this._id}}</a></li>
+        <li>
+          <a href="{{pathFor 'game' this._id}}">
+            <paper-shadow z="1"></paper-shadow>
+            <core-icon icon="social:group"></core-icon>
+            {{#if players.length}}
+              {{#each players}}
+                {{name}}
+              {{/each}}
+            {{else}}
+              No players
+            {{/if}}
+            <div class="id">{{_id}}</div>
+          </a>
+        </li>
       {{/each}}
     </ul>
   </div>

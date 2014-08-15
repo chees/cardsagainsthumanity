@@ -28,6 +28,34 @@ footer {
   padding: 10px;
 }
 
+.games {
+  margin: 10px;
+}
+.games ul {
+  list-style-type: none;
+  padding: 0;
+}
+.games li {
+  margin-bottom: 10px;
+}
+.games a {
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+.games a:hover {
+  background-color: #ffab40;
+}
+.games a .id {
+  font-size: small;
+  color: #888;
+  text-align: right;
+}
+.games a:hover .id {
+  color: #111;
+}
+
 
 body {
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
@@ -43,6 +71,13 @@ body {
   padding: 0;
 }
 
+a {
+  color: #4285f4;
+}
+a:hover {
+  color: #111;
+}
+
 core-header-panel {
   background: white;
   /* height: 100% fails here on some browsers */
@@ -53,7 +88,7 @@ core-header-panel {
 core-toolbar {
   color: #f1f1f1;
   fill: #f1f1f1;
-  background: #4285f4;
+  background: #5677fc;
 }
 
 paper-button {

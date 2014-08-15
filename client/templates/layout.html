@@ -5,12 +5,13 @@
 
 <template name="layout">
   <div class="login">
-    {{> loginButtons align="right"}}
+    
   </div>
   <core-header-panel>
     <core-toolbar>
       <paper-icon-button icon="home"></paper-icon-button>
       <span flex>Cards Against Humanity</span>
+      {{> loginButtons align="right"}}
     </core-toolbar>
     {{> yield}}
   </core-header-panel>
