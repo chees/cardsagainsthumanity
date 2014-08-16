@@ -10,5 +10,5 @@ Template.createGame.events({
 
 
 Template.games.games = function() {
-  return Games.find();
+  return Games.find({}, {sort: {creationDate: -1}});
 };

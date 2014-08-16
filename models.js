@@ -13,7 +13,8 @@ getNewGame = function() {
     answers: _.shuffle(getDefaultAnswers()),
     players: [],
     selectedAnswers: [],
-    czar: 0
+    czar: 0,
+    creationDate: new Date().getTime()
   }// TODO creationDate?
 };
 

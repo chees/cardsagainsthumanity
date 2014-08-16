@@ -29,3 +29,5 @@ Router.configure({
   notFoundTemplate: 'notFound',
   loadingTemplate: 'loading'
 });
+
+Meteor.subscribe("userData");

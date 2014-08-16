@@ -6,7 +6,7 @@
 <template name="createGame">
   <div>
     {{#if isLoggedIn}}
-      <paper-button raisedButton class="colored" label="New game"></paper-button>
+      <paper-button icon="add" raisedButton class="colored" label="New game"></paper-button>
     {{else}}
       Log in to start a game.
     {{/if}}
@@ -21,15 +21,22 @@
         <li>
           <a href="{{pathFor 'game' this._id}}">
             <paper-shadow z="1"></paper-shadow>
-            <core-icon icon="social:group"></core-icon>
-            {{#if players.length}}
-              {{#each players}}
-                {{name}}
-              {{/each}}
-            {{else}}
-              No players
-            {{/if}}
+            <div class="players">
+              <!-- <core-icon icon="social:group"></core-icon> -->
+              {{#if players.length}}
+                {{#each players}}
+                  <span class="player">
+                    <img src="{{picture}}">
+                    <!-- {{name}} -->
+                  </span>
+                {{/each}}
+              {{else}}
+                No players
+              {{/if}}
+            </div>
+            <div class="creationDate">{{fromNow creationDate}}</div>
             <div class="id">{{_id}}</div>
+            <div class="clear"></div>
           </a>
         </li>
       {{/each}}

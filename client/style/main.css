@@ -28,8 +28,12 @@ footer {
   padding: 10px;
 }
 
+.content {
+  padding: 10px;
+}
+
 .games {
-  margin: 10px;
+  margin-top: 20px;
 }
 .games ul {
   list-style-type: none;
@@ -46,16 +50,36 @@ footer {
 }
 .games a:hover {
   background-color: #ffab40;
+  color: #111;
 }
-.games a .id {
+.games .players {
+  margin-bottom: 10px;
+}
+.games .player img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.games .creationDate,
+.games .id {
   font-size: small;
   color: #888;
   text-align: right;
 }
+.games .creationDate {
+  float: left;
+}
+.games .id {
+  float: right;
+}
+.games a:hover .creationDate,
 .games a:hover .id {
   color: #111;
 }
 
+.clear {
+  clear: both;
+}
 
 body {
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
@@ -91,16 +115,13 @@ core-toolbar {
   background: #5677fc;
 }
 
-paper-button {
-  margin: 1em;
-  width: 10em;
-}
-
 paper-button.colored {
   color: #4285f4;
   fill: #4285f4;
 }
-
+paper-button.colored::shadow core-icon {
+  fill: #fff;
+}
 paper-button[raisedButton].colored {
   background: #4285f4;
   color: #fff;

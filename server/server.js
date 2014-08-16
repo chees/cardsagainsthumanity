@@ -4,13 +4,21 @@ Meteor.startup(function () {
 
 
 Meteor.publish('games', function () {
-  return Games.find({});
+  return Games.find({}, {sort: {creationDate: -1}});
 });
 
 Meteor.publish('game', function(gameId) {
   return Games.find({_id: gameId});
 });
 
+Meteor.publish('userData', function () {
+  if (this.userId) {
+    return Meteor.users.find({_id: this.userId},
+                             {fields: {'services.google.picture': 1}});
+  } else {
+    this.ready();
+  }
+});
 
 
 Meteor.methods({
@@ -32,7 +40,8 @@ Meteor.methods({
       id: user._id,
       name: user.profile.name,
       score: 0,
-      answers: []
+      answers: [],
+      picture: user.services.google.picture
     };
     Games.update(gameId, {$push: { players: player }});
   },
