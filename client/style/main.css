@@ -1,57 +1,3 @@
-.content {
-  padding: 10px;
-}
-
-.games {
-  margin-top: 20px;
-}
-.games ul {
-  list-style-type: none;
-  padding: 0;
-}
-.games li {
-  margin-bottom: 10px;
-}
-.games a {
-  text-decoration: none;
-  padding: 10px;
-  margin: 10px;
-  display: block;
-}
-.games a:hover {
-  background-color: #ffab40;
-  color: #111;
-}
-.games .players {
-  margin-bottom: 10px;
-}
-.games .creationDate,
-.games .id {
-  font-size: small;
-  color: #888;
-  text-align: right;
-}
-.games .creationDate {
-  float: left;
-}
-.games .id {
-  float: right;
-}
-.games a:hover .creationDate,
-.games a:hover .id {
-  color: #111;
-}
-
-.clear {
-  clear: both;
-}
-
-.userPicture {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-}
-
 body {
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
   -webkit-user-select: none;
@@ -106,4 +52,69 @@ paper-button[raisedButton].colored::shadow #ripple {
 paper-button[raisedButton].colored #focusBg,
 paper-button[raisedButton].colored::shadow #focusBg {
   background: #3367d6;
+}
+
+
+.content {
+  padding: 10px;
+}
+
+.games {
+  margin-top: 20px;
+}
+.games ul {
+  list-style-type: none;
+  padding: 0;
+}
+.games li {
+  margin-bottom: 10px;
+}
+.games a {
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+.games a:hover {
+  background-color: #ffab40;
+  color: #111;
+}
+.games .players {
+  margin-bottom: 10px;
+}
+.games .creationDate,
+.games .id {
+  font-size: small;
+  color: #888;
+  text-align: right;
+}
+.games .creationDate {
+  float: left;
+}
+.games .id {
+  float: right;
+}
+.games a:hover .creationDate,
+.games a:hover .id {
+  color: #111;
+}
+
+.game .players ul {
+  list-style-type: none;
+  padding: 0;
+}
+.game .players li {
+  margin-bottom: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.userPicture {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 10px;
 }

@@ -16,8 +16,10 @@ TODO
 - implement czar
 - handle pick 2 questions
 - handle take 2 pick 3 questions
-- finish or delete games
+- finish or delete games after a certain amount of time
 - figure out if I should use Meteor's Session somewhere
 - figure out what Deps.autorun does
 - select better colors: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
 - when clicking on your picture in the top right you should see your global score and have a logout button
+- inserting a new Game should happen on the server (to handle creatinoDate properly)
+- stress test
