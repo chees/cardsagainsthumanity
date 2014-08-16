@@ -18,7 +18,7 @@
     </div>
 
     {{#unless currentUser}}
-      You need to log in to join a game.
+      <paper-button raisedButton class="colored" label="Log in to join" data-role="login"></paper-button>
     {{/unless}}
 
     {{#if canJoin}}
@@ -59,11 +59,16 @@
 </template>
 
 <template name="hand">
-  <div>
+  <div class="hand">
     Your hand:
     <ul>
       {{#each answers}}
-        <li><a href="#">{{this}}</a></li>
+        <li>
+          <a href="#" class="answer">
+            <paper-shadow z="1"></paper-shadow>
+            {{this}}
+          </a>
+        </li>
       {{/each}}
     </ul>
   </div>

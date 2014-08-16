@@ -23,3 +23,4 @@ TODO
 - when clicking on your picture in the top right you should see your global score and have a logout button
 - inserting a new Game should happen on the server (to handle creatinoDate properly)
 - stress test
+- format questions with newlines

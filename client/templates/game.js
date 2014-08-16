@@ -41,6 +41,9 @@ Template.game.events({
   },
   'click #start': function(e, t) {
     Meteor.call('startGame', this._id);
+  },
+  'click paper-button[data-role="login"]': function(e, t) {
+    Meteor.loginWithGoogle();
   }
 });
 
