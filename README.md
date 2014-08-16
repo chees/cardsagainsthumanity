@@ -21,4 +21,3 @@ TODO
 - figure out what Deps.autorun does
 - select better colors: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
 - when clicking on your picture in the top right you should see your global score and have a logout button
-- remove the accounts-ui-unstyled-fork
