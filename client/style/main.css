@@ -1,33 +1,3 @@
-/*
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-header,
-footer {
-  padding: 10px;
-  background-color: #eee;
-}
-
-.main {
-  padding: 10px;
-}
-
-.login {
-  float: right;
-  padding: 10px;
-}
-*/
-
-.login {
-  float: right;
-  padding: 10px;
-}
-
 .content {
   padding: 10px;
 }
@@ -55,11 +25,6 @@ footer {
 .games .players {
   margin-bottom: 10px;
 }
-.games .player img {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-}
 .games .creationDate,
 .games .id {
   font-size: small;
@@ -79,6 +44,12 @@ footer {
 
 .clear {
   clear: both;
+}
+
+.userPicture {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
 }
 
 body {

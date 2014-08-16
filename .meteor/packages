@@ -6,6 +6,7 @@
 standard-app-packages
 iron-router
 accounts-google
-accounts-ui
 polymer
 moment
+accounts-base
+service-configuration

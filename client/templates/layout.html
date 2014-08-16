@@ -4,14 +4,13 @@
 </head>
 
 <template name="layout">
-  <div class="login">
-    
-  </div>
   <core-header-panel>
     <core-toolbar>
       <paper-icon-button icon="home"></paper-icon-button>
       <span flex>Cards Against Humanity</span>
-      {{> loginButtons align="right"}}
+      {{#if currentUser}}
+        <img src="{{userPicture}}" class="userPicture">
+      {{/if}}
     </core-toolbar>
     <div class="content">
       {{> yield}}

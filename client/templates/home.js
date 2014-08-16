@@ -1,10 +1,13 @@
 Template.createGame.events({
-  'click paper-button': function(e, t) {
+  'click paper-button[data-role="newGame"]': function(e, t) {
     Games.insert(getNewGame(), function(error, id) {
       if (id) {
         Router.go('game', {_id: id});
       } // TODO else handle error?
     });
+  },
+  'click paper-button[data-role="login"]': function(e, t) {
+    Meteor.loginWithGoogle();
   }
 });
 

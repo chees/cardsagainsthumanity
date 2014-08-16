@@ -3,3 +3,7 @@ Template.layout.events({
     Router.go('home');
   }
 });
+
+Template.layout.userPicture = function() {
+  return Meteor.user().services.google.picture;
+};

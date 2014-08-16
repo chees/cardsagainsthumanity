@@ -5,10 +5,10 @@
 
 <template name="createGame">
   <div>
-    {{#if isLoggedIn}}
-      <paper-button icon="add" raisedButton class="colored" label="New game"></paper-button>
+    {{#if currentUser}}
+      <paper-button icon="add" raisedButton class="colored" label="New game" data-role="newGame"></paper-button>
     {{else}}
-      Log in to start a game.
+      <paper-button raisedButton class="colored" label="Log in to start a game" data-role="login"></paper-button>
     {{/if}}
   </div>
 </template>
@@ -26,7 +26,7 @@
               {{#if players.length}}
                 {{#each players}}
                   <span class="player">
-                    <img src="{{picture}}">
+                    <img src="{{picture}}" class="userPicture">
                     <!-- {{name}} -->
                   </span>
                 {{/each}}

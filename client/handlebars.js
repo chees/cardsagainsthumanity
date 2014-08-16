@@ -1,7 +1,3 @@
-UI.registerHelper('isLoggedIn', function() {
-  return Meteor.user() !== null;
-});
-
 UI.registerHelper('fromNow', function(datetime, format) {
   return moment(datetime).fromNow();
 });
