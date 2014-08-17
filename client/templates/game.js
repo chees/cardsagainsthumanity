@@ -36,7 +36,6 @@ Template.game.isSelectingWinner = function() {
 
 Template.game.events({
   'click #join': function(e, t) {
-    e.preventDefault();
     Meteor.call('joinGame', this._id);
   },
   'click #start': function(e, t) {

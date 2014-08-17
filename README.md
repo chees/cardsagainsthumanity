@@ -21,6 +21,5 @@ TODO
 - figure out what Deps.autorun does
 - select better colors: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
 - when clicking on your picture in the top right you should see your global score and have a logout button
-- inserting a new Game should happen on the server (to handle creatinoDate properly)
 - stress test
 - format questions with newlines
