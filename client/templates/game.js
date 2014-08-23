@@ -75,9 +75,8 @@ Template.hand.events({
   'click a': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
-    var playerId = Meteor.user()._id;
-    var answer = e.target.innerText;
-    Meteor.call('selectAnswer', gameId, playerId, answer);
+    var answer = e.currentTarget.innerText;
+    Meteor.call('selectAnswer', gameId, answer);
   }
 });
 

@@ -75,17 +75,15 @@ Meteor.methods({
       players: p
     }});
   },
-  selectAnswer: function(gameId, playerId, answer) {
-    // TODO check somehow that you can only set your own answer?
-    // TODO user Meteor.user() instead of passing the playerId
-    console.log('selectAnswer', gameId, playerId, answer);
+  selectAnswer: function(gameId, answer) {
+    console.log('selectAnswer', gameId, answer);
 
     var game = Games.findOne(gameId);
     if (game.status !== 'answering') {
       return;
     }
 
-    var pos = getPlayerPosition(game, playerId);
+    var pos = getPlayerPosition(game, Meteor.user()._id);
     game.selectedAnswers[pos] = answer;
 
     Games.update(gameId, {$set: { selectedAnswers: game.selectedAnswers }});
@@ -141,7 +139,7 @@ function getPlayerPosition(game, playerId) {
 function everybodyAnswered(game) {
   // TODO ignore the czar
   for (var i = 0; i < game.players.length; i++) {
-    if (game.selectedAnswers[i] === undefined)
+    if (game.selectedAnswers[i] == null)
       return false;
   }
   return true;
