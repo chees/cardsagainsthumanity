@@ -3,8 +3,10 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  var where = ['client'];
+  
+  api.add_files(['lib/server/platform.js'], 'server', {isAsset: true});
+  api.add_files(['lib/server/inject.js'], 'server');
 
-  api.add_files(["platform.js"], where);
-  api.add_files(["import.js"], where);
+  //api.add_files(["platform.js"], where);
+  api.add_files(['import.js'], 'client');
 });
