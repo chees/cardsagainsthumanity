@@ -6,9 +6,9 @@
 <template name="createGame">
   <div>
     {{#if currentUser}}
-      <paper-button icon="add" raisedButton class="colored" label="New game" data-role="newGame"></paper-button>
+      <button data-role="newGame">New game</button>
     {{else}}
-      <paper-button raisedButton class="colored" label="Log in to start a game" data-role="login"></paper-button>
+      <button data-role="login">Log in to start a game</button>
     {{/if}}
   </div>
 </template>
@@ -20,14 +20,11 @@
       {{#each games}}
         <li>
           <a href="{{pathFor 'game' this._id}}">
-            <paper-shadow z="1"></paper-shadow>
             <div class="players">
-              <!-- <core-icon icon="social:group"></core-icon> -->
               {{#if players.length}}
                 {{#each players}}
                   <span class="player">
                     <img src="{{picture}}" class="userPicture">
-                    <!-- {{name}} -->
                   </span>
                 {{/each}}
               {{else}}

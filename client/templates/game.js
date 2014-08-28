@@ -35,13 +35,13 @@ Template.game.isSelectingWinner = function() {
 };
 
 Template.game.events({
-  'click #join': function(e, t) {
+  'click button[data-role="join"]': function(e, t) {
     Meteor.call('joinGame', this._id);
   },
-  'click #start': function(e, t) {
+  'click button[data-role="start"]': function(e, t) {
     Meteor.call('startGame', this._id);
   },
-  'click paper-button[data-role="login"]': function(e, t) {
+  'click button[data-role="login"]': function(e, t) {
     Meteor.loginWithGoogle();
   }
 });

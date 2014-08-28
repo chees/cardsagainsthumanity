@@ -7,23 +7,18 @@
 </head>
 
 <template name="layout">
-  <core-header-panel>
-    <core-toolbar>
-      <paper-icon-button icon="home"></paper-icon-button>
-      <span flex>Cards Against Humanity</span>
-      {{#if currentUser}}
-        <img src="{{userPicture}}" class="userPicture">
-      {{/if}}
-    </core-toolbar>
-    <div class="content">
-      {{> yield}}
-    </div>
-  </core-header-panel>
-  <!--
+  <header>
+    <a href="/">Cards Against Humanity</a>
+    {{#if currentUser}}
+      <img src="{{userPicture}}" class="userPicture">
+    {{/if}}
+  </header>
+  <div class="content">
+    {{> yield}}
+  </div>
   <footer>
     <a href="/about">About</a>
   </footer>
-  -->
 </template>
 
 <template name="loading">

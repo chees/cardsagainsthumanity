@@ -18,15 +18,15 @@
     </div>
 
     {{#unless currentUser}}
-      <paper-button raisedButton class="colored" label="Log in to join" data-role="login"></paper-button>
+      <button data-role="login">Log in to join</button>
     {{/unless}}
 
     {{#if canJoin}}
-      <paper-button raisedButton class="colored" label="Join" id="join"></paper-button>
+      <button data-role="join">Join</button>
     {{/if}}
 
     {{#if canStart}}
-      <paper-button raisedButton class="colored" label="Start" id="start"></paper-button>
+      <button data-role="start">Start</button>
     {{/if}}
 
     {{#unless isSetup}}
