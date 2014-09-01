@@ -23,3 +23,4 @@ TODO
 - when clicking on your picture in the top right you should see your global score and have a logout button
 - stress test
 - format questions with newlines
+- figure out how to do transactions on the game object to avoid race conditions

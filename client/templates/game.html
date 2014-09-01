@@ -2,6 +2,26 @@
   <div class="game">
     Status: {{status}}
 
+    {{#if isSetup}}
+      {{#unless currentUser}}
+        <button data-role="login">Log in to join</button>
+      {{/unless}}
+
+      {{#if canJoin}}
+        <button data-role="join">Join</button>
+      {{/if}}
+
+      {{#if hasEnoughPlayers}}
+        {{#if isCreator}}
+          <button data-role="start">Start</button>
+        {{else}}
+          <div>Waiting for {{creatorName}} to start the game...</div>
+        {{/if}}
+      {{else}}
+        <div>Waiting for more players to join...</div>
+      {{/if}}
+    {{/if}}
+
     <div class="players">
       Players:
       <ul>
@@ -17,17 +37,8 @@
       </ul>
     </div>
 
-    {{#unless currentUser}}
-      <button data-role="login">Log in to join</button>
-    {{/unless}}
 
-    {{#if canJoin}}
-      <button data-role="join">Join</button>
-    {{/if}}
-
-    {{#if canStart}}
-      <button data-role="start">Start</button>
-    {{/if}}
+    
 
     {{#unless isSetup}}
       <div>

@@ -12,10 +12,16 @@ Template.game.canJoin = function() {
     this.status == 'setup';
 };
 
-Template.game.canStart = function() {
-  return Meteor.user() != null &&
-    getCurrentPlayer(this.players) != null &&
-    this.status == 'setup';
+Template.game.hasEnoughPlayers = function() {
+  return this.players.length >= 3;
+};
+
+Template.game.isCreator = function() {
+  return Meteor.user() && Meteor.user()._id == this.creator;
+};
+
+Template.game.creatorName = function() {
+  return _.findWhere(this.players, {id: this.creator}).name;
 };
 
 Template.game.isSetup = function() {

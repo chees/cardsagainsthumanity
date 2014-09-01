@@ -24,13 +24,16 @@ header {
   background: #5677fc;
   padding: 10px;
   display: -webkit-flex;
+  -webkit-justify-content: space-between;
+  -webkit-align-items: center;
 }
 header a {
   color: #fff;
-  -webkit-flex-grow: 1;
 }
-header .userPicture {
-  -webkit-align-self: flex-end;
+
+footer {
+  padding: 10px;
+  background-color: #eee;
 }
 
 .content {
@@ -94,6 +97,7 @@ header .userPicture {
   padding: 10px;
   margin: 10px;
   display: block;
+  border: 1px solid black;
 }
 
 .clear {

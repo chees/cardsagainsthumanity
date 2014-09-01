@@ -13,8 +13,9 @@ Meteor.publish('game', function(gameId) {
 
 Meteor.publish('userData', function () {
   if (this.userId) {
-    return Meteor.users.find({_id: this.userId},
-                             {fields: {'services.google.picture': 1}});
+    return Meteor.users.find(
+      {_id: this.userId},
+      {fields: {'services.google.picture': 1}});
   } else {
     this.ready();
   }
@@ -23,18 +24,27 @@ Meteor.publish('userData', function () {
 
 Meteor.methods({
   createGame: function() {
+    if (!Meteor.user()) {
+      return;
+    }
+
     var game = {
       status: 'setup', // setup, answering, selectingWinner
       questions: _.shuffle(getDefaultQuestions()),
       answers: _.shuffle(getDefaultAnswers()),
       players: [newPlayer()],
       selectedAnswers: [],
-      czar: 0,
-      creationDate: new Date().getTime()
+      czar: Meteor.user()._id,
+      creationDate: new Date().getTime(),
+      creator: Meteor.user()._id
     }
     return Games.insert(game);
   },
   joinGame: function(gameId) {
+    if (!Meteor.user()) {
+      return;
+    }
+
     var game = Games.findOne(gameId);
     if (game.status !== 'setup') {
       return;
@@ -52,6 +62,10 @@ Meteor.methods({
     Games.update(gameId, {$push: { players: player }});
   },
   startGame: function (id) {
+    if (!Meteor.user()) {
+      return;
+    }
+
     var game = Games.findOne(id);
     if (game.status !== 'setup') {
       return;
@@ -76,7 +90,9 @@ Meteor.methods({
     }});
   },
   selectAnswer: function(gameId, answer) {
-    console.log('selectAnswer', gameId, answer);
+    if (!Meteor.user()) {
+      return;
+    }
 
     var game = Games.findOne(gameId);
     if (game.status !== 'answering') {
@@ -94,7 +110,9 @@ Meteor.methods({
   },
   selectWinner: function(gameId, playerPos) {
     // TODO check Meteor.user() to see if this user is actually the czar in this game
-    console.log('selectWinner', gameId, playerPos);
+    if (!Meteor.user()) {
+      return;
+    }
 
     var game = Games.findOne(gameId);
     if (game.status !== 'selectingWinner') {
