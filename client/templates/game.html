@@ -84,8 +84,9 @@
       {{#each answers}}
         <li>
           <a href="#">
-            {{this}}
+            <span>{{this.answer}}</span>
           </a>
+          <button class="{{clazz}}">Play this Card</button>
         </li>
       {{/each}}
     </ul>

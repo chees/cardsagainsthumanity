@@ -74,15 +74,27 @@ Template.answers.events({
 Template.hand.answers = function() {
   var player = getCurrentPlayer(this.players);
   if (player === null) return;
-  return player.answers;
+  var answers = [];
+  for (var i = 0; i < player.answers.length; i++) {
+    var answer = player.answers[i];
+    var clazz = answer === Session.get('selectedAnswer') ? '' : 'hidden';
+    answers.push({
+      answer: answer,
+      clazz: clazz
+    });
+  }
+  return answers;
 };
 
 Template.hand.events({
   'click a': function(e, t) {
     e.preventDefault();
+    Session.set('selectedAnswer', this.answer);
+  },
+  'click button': function(e, t) {
+    e.preventDefault();
     var gameId = t.data._id;
-    var answer = e.currentTarget.innerText;
-    Meteor.call('selectAnswer', gameId, answer);
+    Meteor.call('selectAnswer', gameId, this.answer);
   }
 });
 

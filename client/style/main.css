@@ -25,6 +25,23 @@ a:hover {
   color: #666;
 }
 
+button {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #222;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+button:before {
+  content: " ";
+  background-color: #666;
+  display: block;
+  height: 1px;
+  margin: -8px -5px 7px -5px;
+}
+
 header {
   padding: 15px;
   display: -webkit-flex;
@@ -102,24 +119,30 @@ footer {
   list-style-type: none;
   padding: 0;
 }
-.game .hand a {
-  text-decoration: none;
+.game .hand li {
   background-color: #fff;
   color: #222;
   padding: 15px 15px 25px 15px;
-  display: block;
   border-radius: 10px 10px 0 0;
   box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.game .hand a {
+  text-decoration: none;
+  color: #222;  
+  display: block;
   font-weight: bold;
   font-size: 18px;
-}
-.game .hand a:hover {
-  background-color: #666;
 }
 .game .hand li:not(:first-child) {
   margin-top: -10px;
 }
+.game .hand button {
+  width: 100%;
+}
 
+.hidden {
+  display: none;
+}
 .clear {
   clear: both;
 }
