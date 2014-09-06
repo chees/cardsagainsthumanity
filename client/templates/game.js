@@ -13,7 +13,7 @@ Template.game.canJoin = function() {
 };
 
 Template.game.hasEnoughPlayers = function() {
-  return this.players.length >= 3;
+  return this.players.length >= 2; // 3
 };
 
 Template.game.isCreator = function() {

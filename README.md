@@ -24,3 +24,16 @@ TODO
 - stress test
 - format questions with newlines
 - figure out how to do transactions on the game object to avoid race conditions
+- waiting texts: "Waiting... and waiting...", "this is taking long", "omg he's slow", etc.
+
+
+Colors:
+#fff
+#222
+#666
+
+Margins:
+15px left and right
+4 col grid
+10px between cols
+each col 65px

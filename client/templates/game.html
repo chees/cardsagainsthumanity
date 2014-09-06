@@ -1,6 +1,6 @@
 <template name="game">
   <div class="game">
-    Status: {{status}}
+    <div>Status: {{status}}</div>
 
     {{#if isSetup}}
       {{#unless currentUser}}
@@ -13,15 +13,27 @@
 
       {{#if hasEnoughPlayers}}
         {{#if isCreator}}
-          <button data-role="start">Start</button>
+          <button data-role="start">Ohhhh yes we are ready to start!</button>
         {{else}}
           <div>Waiting for {{creatorName}} to start the game...</div>
         {{/if}}
       {{else}}
         <div>Waiting for more players to join...</div>
       {{/if}}
+      <div class="players">
+        Players:
+        <ul>
+          {{#each players}}
+            <li>
+              <img src="{{picture}}" class="userPicture">
+              {{name}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
     {{/if}}
 
+    <!--
     <div class="players">
       Players:
       <ul>
@@ -36,7 +48,7 @@
         {{/each}}
       </ul>
     </div>
-
+    -->
 
     
 
