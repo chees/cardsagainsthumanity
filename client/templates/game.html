@@ -1,7 +1,5 @@
 <template name="game">
   <div class="game">
-    <div>Status: {{status}}</div>
-
     {{#if isSetup}}
       {{#unless currentUser}}
         <button data-role="login">Log in to join</button>
@@ -53,9 +51,8 @@
     
 
     {{#unless isSetup}}
-      <div>
-        Question:
-        <strong>{{question}}</strong>
+      <div class="question">
+        {{question}}
       </div>
 
       {{#if isSelectingWinner}}
@@ -83,12 +80,10 @@
 
 <template name="hand">
   <div class="hand">
-    Your hand:
     <ul>
       {{#each answers}}
         <li>
-          <a href="#" class="answer">
-            <paper-shadow z="1"></paper-shadow>
+          <a href="#">
             {{this}}
           </a>
         </li>

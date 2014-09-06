@@ -94,16 +94,30 @@ footer {
 .game .players li {
   margin-bottom: 10px;
 }
+.game .question {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
 .game .hand ul {
   list-style-type: none;
   padding: 0;
 }
-.game a.answer {
+.game .hand a {
   text-decoration: none;
-  padding: 10px;
-  margin: 10px;
+  background-color: #fff;
+  color: #222;
+  padding: 15px 15px 25px 15px;
   display: block;
-  border: 1px solid black;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  font-weight: bold;
+  font-size: 18px;
+}
+.game .hand a:hover {
+  background-color: #666;
+}
+.game .hand li:not(:first-child) {
+  margin-top: -10px;
 }
 
 .clear {
