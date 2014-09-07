@@ -2,6 +2,8 @@ Router.map(function() {
   this.route('home', {
     path: '/',
     waitOn: function() {
+      // TODO maybe also wait on user data since it takes a while
+      // for Meteor to notice that you're already logged in
       return Meteor.subscribe('games');
     }
   });

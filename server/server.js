@@ -147,7 +147,7 @@ Meteor.methods({
     // Empty selectedAnswers
     game.selectedAnswers = [];
 
-    // Select a new czar
+    // Select a new czar (TODO base on round winner?)
     var playerIds = _.pluck(game.players, 'id');
     var newCzarPos = (playerIds.indexOf(game.czar) + 1) % playerIds.length;
     game.czar = playerIds[newCzarPos];
