@@ -49,8 +49,7 @@ Template.game.isJoined = function() {
 };
 
 Template.game.hasAnswered = function() {
-  // TODO
-  return true;
+  return hasAnswered(this);
 };
 
 Template.game.events({
@@ -85,7 +84,11 @@ Template.hand.answers = function() {
   var answers = [];
   for (var i = 0; i < player.answers.length; i++) {
     var answer = player.answers[i];
-    var clazz = answer === Session.get('selectedAnswer') ? '' : 'hidden';
+    if (hasAnswered(this) || answer !== Session.get('selectedAnswer')) {
+      var clazz = 'hidden';
+    } else {
+      var clazz = '';
+    }
     answers.push({
       answer: answer,
       clazz: clazz
@@ -97,7 +100,11 @@ Template.hand.answers = function() {
 Template.hand.events({
   'click a': function(e, t) {
     e.preventDefault();
-    Session.set('selectedAnswer', this.answer);
+    if (Session.get('selectedAnswer') === this.answer) {
+      Session.set('selectedAnswer', null);
+    } else {
+      Session.set('selectedAnswer', this.answer);
+    }
   },
   'click button': function(e, t) {
     e.preventDefault();
@@ -121,4 +128,14 @@ function getCurrentPlayer(players) {
     }
   }
   return null;
+}
+
+function hasAnswered(game) {
+  for (var i = 0; i < game.players.length; i++) {
+    if (game.players[i].id === Meteor.user()._id &&
+        game.selectedAnswers[i]) {
+      return true;
+    }
+  }
+  return false;
 }
