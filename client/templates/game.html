@@ -50,20 +50,22 @@
 
     
 
-    {{#unless isSetup}}
-      <div class="question">
-        {{question}}
-      </div>
-
-      {{#if isSelectingWinner}}
-        {{>answers}}
-      {{/if}}
-
+    {{#if isAnswering}}
+      <div class="question">{{question}}</div>
       {{#if isJoined}}
+        {{#if hasAnswered}}
+          <div class="waiting">
+            Waiting for the other players...
+          </div>
+        {{/if}}
         {{>hand}}
       {{/if}}
+    {{/if}}
 
-    {{/unless}}
+    {{#if isSelectingWinner}}
+      <div class="question">{{question}}</div>
+      {{>answers}}
+    {{/if}}
   </div>
 </template>
 
@@ -72,7 +74,13 @@
     Answers:
     <ul>
       {{#each selectedAnswers}}
-        <li><a href="#" data-pos="{{playerPos}}">{{answer}}</a></li>
+        <li>
+          {{#if isCzar ..}}
+            <a href="#">{{this}}</a>
+          {{else}}
+            {{this}}
+          {{/if}}
+        </li>
       {{/each}}
     </ul>
   </div>

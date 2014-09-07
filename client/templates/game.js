@@ -15,7 +15,11 @@ Template.game.canJoin = function() {
 Template.game.hasEnoughPlayers = function() {
   return this.players.length >= 2; // 3
 };
-
+/*
+Template.game.isCzar = function() {
+  return Meteor.user() && Meteor.user()._id == this.czar;
+};
+*/
 Template.game.isCreator = function() {
   return Meteor.user() && Meteor.user()._id == this.creator;
 };
@@ -28,6 +32,14 @@ Template.game.isSetup = function() {
   return this.status === 'setup';
 };
 
+Template.game.isAnswering = function() {
+  return this.status === 'answering';
+};
+
+Template.game.isSelectingWinner = function() {
+  return this.status === 'selectingWinner';
+};
+
 Template.game.question = function() {
   return this.questions[0];
 };
@@ -36,8 +48,9 @@ Template.game.isJoined = function() {
   return getCurrentPlayer(this.players) != null;
 };
 
-Template.game.isSelectingWinner = function() {
-  return this.status === 'selectingWinner';
+Template.game.hasAnswered = function() {
+  // TODO
+  return true;
 };
 
 Template.game.events({
@@ -53,23 +66,18 @@ Template.game.events({
 });
 
 
-Template.answers.selectedAnswers = function() {
-  var answers = [];
-  for (var i = 0; i < this.selectedAnswers.length; i++) {
-    answers.push({answer: this.selectedAnswers[i], playerPos: i});
-  }
-  // To prevent cheating this should actually be done on the server:
-  return _.shuffle(answers);
+Template.answers.isCzar = function(parent) {
+  return Meteor.user() && Meteor.user()._id == parent.czar;
 };
 
 Template.answers.events({
   'click a': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
-    var playerPos = $(e.target).attr('data-pos');
-    Meteor.call('selectWinner', gameId, playerPos);
+    Meteor.call('selectWinner', gameId, this);
   }
 });
+
 
 Template.hand.answers = function() {
   var player = getCurrentPlayer(this.players);
@@ -94,7 +102,10 @@ Template.hand.events({
   'click button': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
-    Meteor.call('selectAnswer', gameId, this.answer);
+    Meteor.call('selectAnswer', gameId, this.answer, function(error, result) {
+      if (error) console.log(error); // TODO handle?
+      Session.set('selectedAnswer', null);
+    });
   }
 });
 

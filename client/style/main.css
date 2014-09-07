@@ -115,6 +115,11 @@ footer {
   font-size: 24px;
   margin-bottom: 30px;
 }
+.game .waiting {
+  margin: 50px 0;
+  color: #666;
+  text-align: center;
+}
 .game .hand ul {
   list-style-type: none;
   padding: 0;

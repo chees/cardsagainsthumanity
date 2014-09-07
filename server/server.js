@@ -4,10 +4,12 @@ Meteor.startup(function () {
 
 
 Meteor.publish('games', function () {
+  // TODO publish only required fields
   return Games.find({}, {sort: {creationDate: -1}});
 });
 
 Meteor.publish('game', function(gameId) {
+  // TODO don't publish selectedAnswers to everybody
   return Games.find({_id: gameId});
 });
 
@@ -34,6 +36,7 @@ Meteor.methods({
       answers: _.shuffle(getDefaultAnswers()),
       players: [newPlayer()],
       selectedAnswers: [],
+      shuffledAnswers: [],
       czar: Meteor.user()._id,
       creationDate: new Date().getTime(),
       creator: Meteor.user()._id
@@ -90,6 +93,8 @@ Meteor.methods({
     }});
   },
   selectAnswer: function(gameId, answer) {
+    // TODO this method can be called by multiple people at the
+    // same time, so make sure race conditions are not an issue
     if (!Meteor.user()) {
       return;
     }
@@ -102,20 +107,21 @@ Meteor.methods({
     var pos = getPlayerPosition(game, Meteor.user()._id);
     game.selectedAnswers[pos] = answer;
 
-    Games.update(gameId, {$set: { selectedAnswers: game.selectedAnswers }});
-    
+    var set = { selectedAnswers: game.selectedAnswers };
     if (everybodyAnswered(game)) {
-      Games.update(gameId, {$set: { status: 'selectingWinner' }});
+      set.status = 'selectingWinner';
+      set.shuffledAnswers = _.shuffle(game.selectedAnswers);
     }
+    Games.update(gameId, {$set: set});
   },
-  selectWinner: function(gameId, playerPos) {
-    // TODO check Meteor.user() to see if this user is actually the czar in this game
+  selectWinner: function(gameId, answer) {
     if (!Meteor.user()) {
       return;
     }
 
     var game = Games.findOne(gameId);
-    if (game.status !== 'selectingWinner') {
+    if (game.status !== 'selectingWinner' ||
+        game.czar !== Meteor.user()._id) {
       return;
     }
 
@@ -127,16 +133,16 @@ Meteor.methods({
     // Remove the current question
     game.questions = _.tail(game.questions);
 
-    // Update score
-    game.players[playerPos].score++;
-
     for (var i = 0; i < game.players.length; i++) {
+      // Update score
+      if (game.selectedAnswers[i] === answer)
+        game.players[i].score++;
       // Take selected answers from players
       removeOne(game.selectedAnswers[i], game.players[i].answers);
     }
 
     // give new answers to players
-    giveAnswersToPlayer(game);
+    giveAnswersToPlayers(game);
 
     // Empty selectedAnswers
     game.selectedAnswers = [];
@@ -168,7 +174,7 @@ function removeOne(item, list) {
   list.splice(list.indexOf(item), 1);
 }
 
-function giveAnswersToPlayer(game) {
+function giveAnswersToPlayers(game) {
   _.each(game.players, function(p) {
     while (p.answers.length < 10)
       p.answers.push(game.answers.pop());
