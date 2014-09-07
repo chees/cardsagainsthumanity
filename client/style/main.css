@@ -124,6 +124,9 @@ footer {
 .game .players li {
   margin-bottom: 10px;
 }
+.game .players .score {
+  float: right;
+}
 .game .question {
   font-size: 24px;
   margin-bottom: 30px;

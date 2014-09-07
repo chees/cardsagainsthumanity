@@ -20,9 +20,15 @@ Template.game.canJoin = function() {
 Template.game.hasEnoughPlayers = function() {
   return this.players.length >= 2; // 3
 };
+
 Template.game.isCzar = function() {
   return Meteor.user() && Meteor.user()._id == this.czar;
 };
+
+Template.game.czarName = function() {
+  return _.findWhere(this.players, {id: this.czar}).name;
+};
+
 Template.game.isCreator = function() {
   return Meteor.user() && Meteor.user()._id == this.creator;
 };
@@ -41,6 +47,10 @@ Template.game.isAnswering = function() {
 
 Template.game.isSelectingWinner = function() {
   return this.status === 'selectingWinner';
+};
+
+Template.game.isShowingWinner = function() {
+  return this.status === 'showingWinner';
 };
 
 Template.game.question = function() {
@@ -64,6 +74,9 @@ Template.game.events({
   },
   'click button[data-role="login"]': function(e, t) {
     Meteor.loginWithGoogle();
+  },
+  'click button[data-role="nextRound"]': function(e, t) {
+    Meteor.call('nextRound', this._id);
   }
 });
 

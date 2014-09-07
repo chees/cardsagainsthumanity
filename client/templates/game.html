@@ -63,6 +63,25 @@
       <div class="question">{{question}}</div>
       {{>answers}}
     {{/if}}
+
+    {{#if isShowingWinner}}
+      <div class="players">
+        The score so far:
+        <ul>
+          {{#each players}}
+            <li>
+              {{name}}
+              <span class="score">{{score}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{#if isCzar}}
+        <button data-role="nextRound">Start the next round</button>
+      {{else}}
+        Waiting for {{czarName}} to start the next round...
+      {{/if}}
+    {{/if}}
   </div>
 </template>
 

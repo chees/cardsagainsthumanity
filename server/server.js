@@ -31,7 +31,7 @@ Meteor.methods({
     }
 
     var game = {
-      status: 'setup', // setup, answering, selectingWinner
+      status: 'setup', // setup, answering, selectingWinner, showingWinner
       questions: _.shuffle(getDefaultQuestions()),
       answers: _.shuffle(getDefaultAnswers()),
       players: [newPlayer()],
@@ -64,17 +64,15 @@ Meteor.methods({
     var player = newPlayer();
     Games.update(gameId, {$push: { players: player }});
   },
-  startGame: function (id) {
+  startGame: function (gameId) {
     if (!Meteor.user()) {
       return;
     }
 
-    var game = Games.findOne(id);
-    if (game.status !== 'setup') {
+    var game = Games.findOne(gameId);
+    if (game.status !== 'setup' || Meteor.user()._id != game.creator) {
       return;
     }
-
-    // TODO check to make sure you can only start a game where you're the creator
 
     var a = game.answers;
     var p = game.players;
@@ -86,7 +84,7 @@ Meteor.methods({
       }
     }
 
-    Games.update(id, {$set: {
+    Games.update(gameId, {$set: {
       status: 'answering',
       answers: a,
       players: p
@@ -128,7 +126,7 @@ Meteor.methods({
     delete game._id;
 
     // Update status
-    game.status = 'answering';
+    game.status = 'showingWinner';
 
     // Remove the current question
     game.questions = _.tail(game.questions);
@@ -153,6 +151,19 @@ Meteor.methods({
     game.czar = playerIds[newCzarPos];
 
     Games.update(gameId, { $set: game });
+  },
+  nextRound: function(gameId) {
+    if (!Meteor.user()) {
+      return;
+    }
+
+    var game = Games.findOne(gameId);
+    if (game.status !== 'showingWinner' ||
+        game.czar !== Meteor.user()._id) {
+      return;
+    }
+
+    Games.update(gameId, {$set: { status: 'answering' }});
   }
 });
 
