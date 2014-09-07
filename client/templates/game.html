@@ -87,7 +87,9 @@
 
 <template name="answers">
   <div>
-    Answers:
+    {{#if isCzar ..}}
+      Pick the best answer:
+    {{/if}}
     <ul>
       {{#each selectedAnswers}}
         {{#if selectedAnswer}}
@@ -101,6 +103,9 @@
         {{/if}}
       {{/each}}
     </ul>
+    {{#unless isCzar ..}}
+      Waiting for {{czarName}} to pick the best answer...
+    {{/unless}}
   </div>
 </template>
 

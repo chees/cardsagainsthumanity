@@ -91,6 +91,10 @@ Template.answers.isCzar = function(parent) {
   return Meteor.user() && Meteor.user()._id == parent.czar;
 };
 
+Template.answers.czarName = function() {
+  return _.findWhere(this.players, {id: this.czar}).name;
+};
+
 Template.answers.events({
   'click a': function(e, t) {
     e.preventDefault();
