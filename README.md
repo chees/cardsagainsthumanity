@@ -13,13 +13,10 @@ TODO
 - show which answer you selected
 - homepage with explanation
 - more iron-router stuff (404? loading?)
-- implement czar
 - handle pick 2 questions
 - handle take 2 pick 3 questions
 - finish or delete games after a certain amount of time
-- figure out if I should use Meteor's Session somewhere
 - figure out what Deps.autorun does
-- select better colors: http://www.google.com/design/spec/style/color.html#color-ui-color-palette
 - when clicking on your picture in the top right you should see your global score and have a logout button
 - stress test
 - format questions with newlines
@@ -27,13 +24,10 @@ TODO
 - waiting texts: "Waiting... and waiting...", "this is taking long", "omg he's slow", etc.
 
 
-Colors:
-#fff
-#222
-#666
+Colors: #fff #222 #666
 
 Margins:
 15px left and right
 4 col grid
 10px between cols
-each col 65px
+each col 65px (on an iPhone)
