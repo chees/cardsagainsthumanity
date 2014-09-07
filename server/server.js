@@ -141,13 +141,16 @@ Meteor.methods({
       removeOne(game.selectedAnswers[i], game.players[i].answers);
     }
 
-    // give new answers to players
+    // Give new answers to players
     giveAnswersToPlayers(game);
 
     // Empty selectedAnswers
     game.selectedAnswers = [];
 
-    // TODO select a new czar
+    // Select a new czar
+    var playerIds = _.pluck(game.players, 'id');
+    var newCzarPos = (playerIds.indexOf(game.czar) + 1) % playerIds.length;
+    game.czar = playerIds[newCzarPos];
 
     Games.update(gameId, { $set: game });
   }
@@ -161,8 +164,9 @@ function getPlayerPosition(game, playerId) {
 }
 
 function everybodyAnswered(game) {
-  // TODO ignore the czar
   for (var i = 0; i < game.players.length; i++) {
+    if (game.players[i].id == game.czar)
+      continue;
     if (game.selectedAnswers[i] == null)
       return false;
   }
@@ -183,12 +187,18 @@ function giveAnswersToPlayers(game) {
 
 function newPlayer() {
   var user = Meteor.user();
+  var nameWords = user.profile.name.split(' ');
+  var initials = nameWords[0][0];
+  if (nameWords.length > 1) {
+    initials += nameWords[nameWords.length-1][0];
+  }
   return {
     id: user._id,
     name: user.profile.name,
     score: 0,
     answers: [],
-    picture: user.services.google.picture
+    picture: user.services.google.picture,
+    initials: initials.toUpperCase()
   };
 }
 

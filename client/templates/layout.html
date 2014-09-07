@@ -7,23 +7,25 @@
 </head>
 
 <template name="layout">
-  <header>
-    <a href="/">&#x2302;</a>
-    <a href="#menu" class="menu">&#9776;</a>
+  <div class="{{czarClass}}">
+    <header>
+      <a href="/">&#x2302;</a>
+      <a href="#menu" class="menu">&#9776;</a>
+      <!--
+      {{#if currentUser}}
+        <img src="{{userPicture}}" class="userPicture">
+      {{/if}}
+      -->
+    </header>
+    <div class="content">
+      {{> yield}}
+    </div>
     <!--
-    {{#if currentUser}}
-      <img src="{{userPicture}}" class="userPicture">
-    {{/if}}
+    <footer>
+      <a href="/about">About</a>
+    </footer>
     -->
-  </header>
-  <div class="content">
-    {{> yield}}
   </div>
-  <!--
-  <footer>
-    <a href="/about">About</a>
-  </footer>
-  -->
 </template>
 
 <template name="loading">

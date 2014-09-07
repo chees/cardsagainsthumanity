@@ -31,34 +31,31 @@
       </div>
     {{/if}}
 
-    <!--
-    <div class="players">
-      Players:
-      <ul>
-        {{#each players}}
-          <li>
-            <img src="{{picture}}" class="userPicture">
-            {{name}} {{score}}
-            {{#if selectedAnswer}}
-              <i>answered</i>
-            {{/if}}
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-    -->
-
-    
-
     {{#if isAnswering}}
       <div class="question">{{question}}</div>
       {{#if isJoined}}
-        {{#if hasAnswered}}
-          <div class="waiting">
-            Waiting for the other players...
+        {{#if isCzar}}
+          <div class="readyStates">
+            {{#each nonCzarPlayers}}
+              {{#if selectedAnswer}}
+                <span class="ready">
+                  &#10003;
+                </span>
+              {{else}}
+                <span>
+                  {{initials}}
+                </span>
+              {{/if}}
+            {{/each}}
           </div>
+        {{else}}
+          {{#if hasAnswered}}
+            <div class="waiting">
+              Waiting for the other players...
+            </div>
+          {{/if}}
+          {{>hand}}
         {{/if}}
-        {{>hand}}
       {{/if}}
     {{/if}}
 
@@ -74,13 +71,15 @@
     Answers:
     <ul>
       {{#each selectedAnswers}}
-        <li>
-          {{#if isCzar ..}}
-            <a href="#">{{selectedAnswer}}</a>
-          {{else}}
-            {{selectedAnswer}}
-          {{/if}}
-        </li>
+        {{#if selectedAnswer}}
+          <li>
+            {{#if isCzar ..}}
+              <a href="#">{{selectedAnswer}}</a>
+            {{else}}
+              {{selectedAnswer}}
+            {{/if}}
+          </li>
+        {{/if}}
       {{/each}}
     </ul>
   </div>

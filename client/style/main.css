@@ -1,3 +1,6 @@
+html {
+  height: 100%;
+}
 body {
   font-family: Arial;
 
@@ -14,6 +17,7 @@ body {
   */
   margin: 0;
   padding: 0;
+  height: 100%;
   background-color: #222;
   color: #fff;
 }
@@ -56,6 +60,15 @@ header a {
 
 footer {
   padding: 15px;
+}
+
+.czar {
+  background-color: #fff;
+  color: #222;
+  min-height: 100%;
+}
+.czar a {
+  color: #222;
 }
 
 .content {
@@ -116,7 +129,7 @@ footer {
   margin-bottom: 30px;
 }
 .game .waiting {
-  margin: 50px 0;
+  margin: 150px 0;
   color: #666;
   text-align: center;
 }
@@ -143,6 +156,23 @@ footer {
 }
 .game .hand button {
   width: 100%;
+}
+.game .readyStates {
+  display: flex;
+  flex-wrap: wrap;
+}
+.game .readyStates span {
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  margin: 20px 20px;
+  text-align: center;
+  line-height: 40px;
+}
+.game .readyStates span .ready {
+  background-color: #222;
+  color: #fff;
 }
 
 .hidden {

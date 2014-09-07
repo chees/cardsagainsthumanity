@@ -1,7 +1,12 @@
-Template.game.players = function() {
-  var players = this.players; // TODO should I clone instead?
-  for (var i = 0; i < players.length; i++) {
-    players[i].selectedAnswer = this.selectedAnswers[i];
+Template.game.nonCzarPlayers = function() {
+  var players = [];
+  for (var i = 0; i < this.players.length; i ++) {
+    var p = this.players[i];
+    if (p.id === Meteor.user()._id) {
+      continue;
+    }
+    p.selectedAnswer = this.selectedAnswers[i];
+    players.push(p);
   }
   return players;
 };
@@ -15,11 +20,9 @@ Template.game.canJoin = function() {
 Template.game.hasEnoughPlayers = function() {
   return this.players.length >= 2; // 3
 };
-/*
 Template.game.isCzar = function() {
   return Meteor.user() && Meteor.user()._id == this.czar;
 };
-*/
 Template.game.isCreator = function() {
   return Meteor.user() && Meteor.user()._id == this.creator;
 };
