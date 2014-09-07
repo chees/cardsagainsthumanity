@@ -206,7 +206,7 @@ function getDefaultQuestions() {
     "It's a pity that kids these days are all getting involved with ___.",
     "Today on Maury: \"Help! My son is ___!\"",
     "Alternative medicine is now embracing the curative powers of ___.",
-    "And the Academy Award for ___ goes to ___.", // Pick 2
+    //"And the Academy Award for ___ goes to ___.", // Pick 2
     "What's that sound?",
     "What ended my last relationship?",
     "MTV's new reality show features eight washed-up celebrities living with ___.",
@@ -217,23 +217,23 @@ function getDefaultQuestions() {
     "What's a girl's best friend?",
     "TSA guidelines now prohibit ___ on airplanes.",
     "___ That's how I want to die.",
-    "For my next trick, I will pull ___ out of my ___.", // Pick 2
+    //"For my next trick, I will pull ___ out of my ___.", // Pick 2
     "In the new Disney Channel Original Movie, Hannah Montana struggles with ___ for the first time.",
-    "___ is a slippery slope that leads to ___.", // Pick 2
+    //"___ is a slippery slope that leads to ___.", // Pick 2
     "I get by with a little help from ___.",
     "Dear Abby,\nI'm having some trouble with ___ and would like your advice.",
     "Instead of coal, Santa now gives the bad children ___.",
     "What's the most emo?",
     "In 1,000 years, when paper money is a distant memory, how will we pay for goods and services?",
-    "Introducing the amazing superhero/sidekick duo! It's ___ and ___!", // Pick 2
-    "In M. Night Shyamalan's new movie, Bruce Willis discovers that ___ had really been ___ all along.", // Pick 2
+    //"Introducing the amazing superhero/sidekick duo! It's ___ and ___!", // Pick 2
+    //"In M. Night Shyamalan's new movie, Bruce Willis discovers that ___ had really been ___ all along.", // Pick 2
     "A romantic, candlelit dinner would be incomplete without ___.",
     "___. Betcha can't have just one!",
     "White people like ___.",
     "___. High five, bro.",
     "Next from J.K. Rowling: Harry Potter and the Chamber of ___.",
     "Introducing Xtreme Baseball! It's like baseball but with ___!",
-    "In a world ravaged by ___, out only solace is ___.", // Pick 2
+    //"In a world ravaged by ___, out only solace is ___.", // Pick 2
     "War!\nWhat is it good for?",
     "During sex, I like to think about ___.",
     "What are my parents hiding from me?",
@@ -248,8 +248,8 @@ function getDefaultQuestions() {
     "While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ___.",
     "After the earthquake, Sean Penn brought ___ to the people of Haiti.",
     "Next on ESPN2, the World Series of ___.",
-    "Step 1: ___.\nStep 2: ___.\nStep 3: Profit.", // Pick 2
-    "They said we were crazy. They said we couldn't put ___ inside of ___. They were wrong.", // Pick 2
+    //"Step 1: ___.\nStep 2: ___.\nStep 3: Profit.", // Pick 2
+    //"They said we were crazy. They said we couldn't put ___ inside of ___. They were wrong.", // Pick 2
     "But before I kill you, Mr. Bond, I must show you ___.",
     "What gives me uncontrollable gas?",
     "The new Chevy Tahoe. With the power and space to take ___ everywhere you go.",
@@ -258,7 +258,7 @@ function getDefaultQuestions() {
     "What's my secret power?",
     "What's there a ton of in heaven?",
     "What would grandma find disturbing, yet oddly charming?",
-    "I never truly understood ___ until I encountered ___.", // Pick 2
+    //"I never truly understood ___ until I encountered ___.", // Pick 2
     "What did the U.S. airdrop to the children of Afghanistan?",
     "What helps Obama unwind?",
     "What did Vin Diesel eat for dinner?",
@@ -270,19 +270,19 @@ function getDefaultQuestions() {
     "What's Teach for America using to inspire inner city students to succeed?",
     "A recent laboratory study shows that undergraduates have 50% less sex after being exposed to ___.",
     "Life for American Indians was forever changed when the White Man introduced them to ___.",
-    "Make a haiku.", // Draw 2, Pick 3
+    //"Make a haiku.", // Draw 2, Pick 3
     "I do not know with what weapons World War III will be fought, but World War IV will be fought with ___.",
     "Why do I hurt all over?",
     "What am I giving up for Lent?",
     "What's George W. Bush thinking about right now?",
     "The Smithsonian Museum of Natural History has just opened an interactive exhibit on ___.",
     "When I am President of the United States, I will create the Department of ___.",
-    "Lifetime presents \"___, the Story of ___.\"", // Pick 2
+    //"Lifetime presents \"___, the Story of ___.\"", // Pick 2
     "When I am a billionaire, I shall erect a 50-foot statue to commemorate ___.",
-    "When I was tripping on acid, ___ turned into ___.", // Pick 2
-    "That's right, I killed ___. How you ask? ___.", // Pick 2
+    //"When I was tripping on acid, ___ turned into ___.", // Pick 2
+    //"That's right, I killed ___. How you ask? ___.", // Pick 2
     "What's my anti-drug?",
-    "___ + ___ = ___.", // Draw 2, Pick 3
+    //"___ + ___ = ___.", // Draw 2, Pick 3
     "What never fails to liven up the party?",
     "What's the new fad diet?",
     "Fun tip! When your man asks you to go down on him, try surprising him with ___ instead."
