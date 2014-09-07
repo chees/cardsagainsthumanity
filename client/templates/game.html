@@ -76,9 +76,9 @@
       {{#each selectedAnswers}}
         <li>
           {{#if isCzar ..}}
-            <a href="#">{{this}}</a>
+            <a href="#">{{selectedAnswer}}</a>
           {{else}}
-            {{this}}
+            {{selectedAnswer}}
           {{/if}}
         </li>
       {{/each}}
@@ -92,7 +92,7 @@
       {{#each answers}}
         <li>
           <a href="#">
-            <span>{{this.answer}}</span>
+            <span>{{answer}}</span>
           </a>
           <button class="{{clazz}}">Play this Card</button>
         </li>

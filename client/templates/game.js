@@ -65,6 +65,12 @@ Template.game.events({
 });
 
 
+Template.answers.selectedAnswers = function() {
+  return _.map(this.selectedAnswers, function(a) {
+    return {selectedAnswer: a};
+  });
+};
+
 Template.answers.isCzar = function(parent) {
   return Meteor.user() && Meteor.user()._id == parent.czar;
 };
@@ -73,7 +79,7 @@ Template.answers.events({
   'click a': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
-    Meteor.call('selectWinner', gameId, this);
+    Meteor.call('selectWinner', gameId, this.selectedAnswer);
   }
 });
 
