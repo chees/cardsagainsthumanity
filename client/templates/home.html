@@ -6,9 +6,9 @@
 <template name="createGame">
   <div>
     {{#if currentUser}}
-      <button data-role="newGame">New game</button>
+      <button data-role="newGame" class="invert">New game</button>
     {{else}}
-      <button data-role="login">Log in to start a game</button>
+      <button data-role="login" class="invert">Log in to start a game</button>
     {{/if}}
   </div>
 </template>

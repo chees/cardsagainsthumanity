@@ -2,11 +2,11 @@
   <div class="game">
     {{#if isSetup}}
       {{#unless currentUser}}
-        <button data-role="login">Log in to join</button>
+        <button data-role="login" class="invert">Log in to join</button>
       {{/unless}}
 
       {{#if canJoin}}
-        <button data-role="join">Join</button>
+        <button data-role="join" class="invert">Join</button>
       {{/if}}
 
       {{#if hasEnoughPlayers}}

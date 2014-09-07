@@ -45,6 +45,10 @@ button:before {
   height: 1px;
   margin: -8px -5px 7px -5px;
 }
+button.invert {
+  background-color: #fff;
+  color: #222;
+}
 
 header {
   padding: 15px;
@@ -55,7 +59,6 @@ header {
 
 header a {
   text-decoration: none;
-  font-size: 24px;
 }
 
 footer {
@@ -190,4 +193,63 @@ footer {
   height: 40px;
   border-radius: 100%;
   vertical-align: middle;
+}
+
+
+.icon {
+  position: relative;
+  display: inline-block;
+} 
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+}
+
+.icon_hamburger {
+  width: 1.625em;
+  height: .313em;
+  background: #fff;
+}
+.icon_hamburger::before,
+.icon_hamburger::after {
+  width: 1.625em;
+  height: .313em;
+  background: #fff;
+} 
+.icon_hamburger::before {
+  top: -.625em;
+}
+.icon_hamburger::after {
+  bottom: -.625em;
+}
+.czar .icon_hamburger,
+.czar .icon_hamburger::before,
+.czar .icon_hamburger::after {
+  background: #222;
+}
+
+.icon_home {
+  border-bottom: .938em solid #fff;
+  border-left: .938em solid transparent;
+  border-right: .938em solid transparent;
+}
+.icon_home::before,
+.icon_home::after {
+  width: .563em;
+  height: .625em;
+  background: #fff;
+}
+.icon_home::before {
+  margin: .938em 0 0 -.688em;
+}
+.icon_home::after {
+  margin: .938em 0 0 .125em;
+}
+.czar .icon_home {
+  border-bottom-color: #222;
+}
+.czar .icon_home:before,
+.czar .icon_home:after {
+  background: #222;
 }
