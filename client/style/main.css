@@ -55,6 +55,7 @@ header {
   display: -webkit-flex;
   -webkit-justify-content: space-between;
   -webkit-align-items: center;
+  font-size: 80%;
 }
 
 header a {

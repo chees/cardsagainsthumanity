@@ -65,6 +65,25 @@ Template.game.hasAnswered = function() {
   return hasAnswered(this);
 };
 
+Template.game.roundWinner = function() {
+  var u = Meteor.user();
+  if (u && u._id === this.roundWinner) {
+    return "You";
+  }
+  return _.findWhere(this.players, {id: this.roundWinner}).name;
+};
+
+Template.game.completedQuestion = function() {
+  var q = this.questions[0];
+  var a = this.roundWinnerAnswer;
+  if (q.indexOf('___') > -1) {
+    // Remove ending '.':
+    if (a[a.length-1] === '.') a = a.substring(0, a.length - 1);
+    return q.replace('___', a);
+  }
+  return q + ' ' + a;
+};
+
 Template.game.events({
   'click button[data-role="join"]': function(e, t) {
     Meteor.call('joinGame', this._id);

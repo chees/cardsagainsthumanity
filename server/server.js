@@ -39,7 +39,9 @@ Meteor.methods({
       shuffledAnswers: [],
       czar: Meteor.user()._id,
       creationDate: new Date().getTime(),
-      creator: Meteor.user()._id
+      creator: Meteor.user()._id,
+      roundWinner: null,
+      roundWinnerAnswer: null
     }
     return Games.insert(game);
   },
@@ -128,22 +130,19 @@ Meteor.methods({
     // Update status
     game.status = 'showingWinner';
 
-    // Remove the current question
-    game.questions = _.tail(game.questions);
-
     for (var i = 0; i < game.players.length; i++) {
       // Update score
-      if (game.selectedAnswers[i] === answer)
+      if (game.selectedAnswers[i] === answer) {
         game.players[i].score++;
+        game.roundWinner = game.players[i].id;
+      }
       // Take selected answers from players
       removeOne(game.selectedAnswers[i], game.players[i].answers);
     }
 
-    // Give new answers to players
-    giveAnswersToPlayers(game);
+    game.roundWinnerAnswer = answer;
 
-    // Empty selectedAnswers
-    game.selectedAnswers = [];
+    giveAnswersToPlayers(game);
 
     // Select a new czar (TODO base on round winner?)
     var playerIds = _.pluck(game.players, 'id');
@@ -163,7 +162,11 @@ Meteor.methods({
       return;
     }
 
-    Games.update(gameId, {$set: { status: 'answering' }});
+    Games.update(gameId, {$set: {
+      status: 'answering',
+      questions: _.tail(game.questions),
+      selectedAnswers: []
+    }});
   }
 });
 
