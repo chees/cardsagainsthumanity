@@ -6,7 +6,13 @@
 <template name="createGame">
   <div>
     {{#if currentUser}}
-      <button data-role="newGame" class="invert">New game</button>
+      <button data-role="newGame" class="invert">
+        <!-- plus -->
+        <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 20 20" class="svgicon invert">
+          <polygon points="18,9 11,9 11,2 9,2 9,9 2,9 2,11 9,11 9,18 11,18 11,11 18,11 "/>
+        </svg>
+        <span>New game</span>
+      </button>
     {{else}}
       <button data-role="login" class="invert">Log in to start a game</button>
     {{/if}}
