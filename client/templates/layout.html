@@ -9,13 +9,20 @@
 <template name="layout">
   <div class="{{czarClass}}">
     <header>
-      <a href="/"><span class="icon icon_home"></span></a>
-      <a href="#menu" class="menu"><span class="icon icon_hamburger"></span></a>
-      <!--
-      {{#if currentUser}}
-        <img src="{{userPicture}}" class="userPicture">
-      {{/if}}
-      -->
+      <a href="/">
+        <svg x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" class="svgicon {{homeClass}}">
+          <path d="M18.1,18.818H1.9V8.187L10,0.818l8.1,7.369V18.818z M3.7,17.05h12.6V8.959L10,3.229L3.7,8.959V17.05z"/>
+        </svg>
+      </a>
+      <a href="#menu" class="menu">
+        <svg x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" class="svgicon">
+          <g>
+            <rect x="2" y="2" width="16" height="2"/>
+            <rect x="2" y="9" width="16" height="2"/>
+            <rect x="2" y="16" width="16" height="2"/>
+          </g>
+        </svg>
+      </a>
     </header>
     <div class="content">
       {{> yield}}

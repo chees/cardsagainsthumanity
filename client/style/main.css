@@ -51,11 +51,21 @@ button.invert {
 }
 
 header {
-  padding: 15px;
+  padding: 0 15px;
   display: -webkit-flex;
   -webkit-justify-content: space-between;
   -webkit-align-items: center;
   font-size: 80%;
+  height: 60px;
+}
+header:after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-image: linear-gradient(#000, transparent);
 }
 
 header a {
@@ -196,6 +206,23 @@ footer {
   vertical-align: middle;
 }
 
+
+.svgicon {
+  fill: #fff;
+}
+.rotate {
+  -webkit-animation-duration: .3s;
+  -webkit-animation-name: rotate;
+  -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-0.25turn);
+  }
+}
 
 /* http://appendto.com/2014/03/replacing-common-ui-icons-with-css-2/ */
 .icon {

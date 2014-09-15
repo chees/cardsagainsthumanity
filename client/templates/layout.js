@@ -9,3 +9,8 @@ Template.layout.czarClass = function() {
     return 'czar';
   return '';
 };
+
+Template.layout.homeClass = function() {
+  if ($.isEmptyObject(this)) return '';
+  return 'rotate';
+};
