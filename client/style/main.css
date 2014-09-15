@@ -209,7 +209,12 @@ footer {
 
 .svgicon {
   fill: #fff;
+  -webkit-transition: transform .3s linear;
 }
+.rotate {
+  transform: rotate(-0.25turn);
+}
+/*
 .rotate {
   -webkit-animation-duration: .3s;
   -webkit-animation-name: rotate;
@@ -223,6 +228,8 @@ footer {
     transform: rotate(-0.25turn);
   }
 }
+*/
+
 
 /* http://appendto.com/2014/03/replacing-common-ui-icons-with-css-2/ */
 .icon {
