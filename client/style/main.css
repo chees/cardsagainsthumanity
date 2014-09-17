@@ -52,16 +52,21 @@ button .svgicon + span {
 }
 
 header {
-  padding: 0 15px;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: #222;
   display: -webkit-flex;
   -webkit-justify-content: space-between;
   -webkit-align-items: center;
   font-size: 80%;
-  height: 60px;
   box-shadow: 0px 0px 4px #000;
 }
-
+.czar header {
+  background-color: #fff;
+}
 header a {
+  padding: 0 15px;
   text-decoration: none;
 }
 
@@ -79,7 +84,7 @@ footer {
 }
 
 .content {
-  padding: 15px;
+  padding: 75px 15px 15px 15px;
 }
 
 .games {
@@ -95,10 +100,10 @@ footer {
 .games a {
   text-decoration: none;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   display: block;
   background-color: #fff;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
 }
 .games a:hover {
   background-color: #666;
@@ -172,22 +177,25 @@ footer {
   flex-wrap: wrap;
 }
 .game .readyStates span {
-  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-  border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  margin: 20px 20px;
+  border: 2px solid #222;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 40px 20px;
   text-align: center;
-  line-height: 40px;
+  line-height: 60px;
+  font-size: 24px;
 }
 .game .readyStates span .ready {
   background-color: #222;
   color: #fff;
 }
-
 .game .answers a {
   padding: 10px 0;
   line-height: 40px;
+}
+.game .roundWinner {
+  margin-bottom: 10px;
 }
 
 .hidden {

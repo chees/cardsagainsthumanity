@@ -14,3 +14,10 @@ Template.layout.homeClass = function() {
   if ($.isEmptyObject(this)) return '';
   return 'rotate';
 };
+
+Template.layout.events({
+  'click a[data-role="menu"]': function(e, t) {
+    e.preventDefault();
+    alert('Nomnomnom, hamburgers!');
+  }
+});
