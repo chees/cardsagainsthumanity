@@ -94,14 +94,14 @@
     {{#if isCzar ..}}
       Pick the best answer:
     {{/if}}
-    <ul>
-      {{#each selectedAnswers}}
-        {{#if selectedAnswer}}
+    <ul class="answers">
+      {{#each shuffledAnswers}}
+        {{#if shuffledAnswer}}
           <li>
             {{#if isCzar ..}}
-              <a href="#">{{selectedAnswer}}</a>
+              <a href="#">{{shuffledAnswer}}</a>
             {{else}}
-              {{selectedAnswer}}
+              {{shuffledAnswer}}
             {{/if}}
           </li>
         {{/if}}

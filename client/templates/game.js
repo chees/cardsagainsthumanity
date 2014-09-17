@@ -100,9 +100,9 @@ Template.game.events({
 });
 
 
-Template.answers.selectedAnswers = function() {
-  return _.map(this.selectedAnswers, function(a) {
-    return {selectedAnswer: a};
+Template.answers.shuffledAnswers = function() {
+  return _.map(this.shuffledAnswers, function(a) {
+    return {shuffledAnswer: a};
   });
 };
 
@@ -118,7 +118,7 @@ Template.answers.events({
   'click a': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
-    Meteor.call('selectWinner', gameId, this.selectedAnswer);
+    Meteor.call('selectWinner', gameId, this.shuffledAnswer);
   }
 });
 
