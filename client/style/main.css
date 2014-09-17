@@ -185,6 +185,11 @@ footer {
   color: #fff;
 }
 
+.game .answers a {
+  padding: 10px 0;
+  line-height: 40px;
+}
+
 .hidden {
   display: none;
 }
