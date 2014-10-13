@@ -215,7 +215,7 @@ footer {
 
 .svgicon {
   fill: #fff;
-  -webkit-transition: transform .3s linear;
+  -webkit-transition: -webkit-transform .3s linear;
   margin: 2px 0 -2px 0;
 }
 .svgicon.invert {
@@ -225,7 +225,7 @@ footer {
   fill: #222;
 }
 .rotate {
-  transform: rotate(-0.25turn);
+  -webkit-transform: rotate(-90deg);
 }
 /*
 .rotate {
