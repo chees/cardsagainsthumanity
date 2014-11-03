@@ -17,7 +17,8 @@ Meteor.publish('userData', function () {
   if (this.userId) {
     return Meteor.users.find(
       {_id: this.userId},
-      {fields: {'services.google.picture': 1}});
+      //{fields: {'services.google.picture': 1}});
+      {fields: {'services.facebook.id': 1}});
   } else {
     this.ready();
   }
@@ -211,7 +212,8 @@ function newPlayer() {
     name: user.profile.name,
     score: 0,
     answers: [],
-    picture: user.services.google.picture,
+    //picture: user.services.google.picture,
+    picture: 'http://graph.facebook.com/' + user.services.facebook.id + '/picture/?type=large',
     initials: initials.toUpperCase()
   };
 }

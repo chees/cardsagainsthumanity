@@ -92,7 +92,8 @@ Template.game.events({
     Meteor.call('startGame', this._id);
   },
   'click button[data-role="login"]': function(e, t) {
-    Meteor.loginWithGoogle();
+    //Meteor.loginWithGoogle();
+    Meteor.loginWithFacebook();
   },
   'click button[data-role="nextRound"]': function(e, t) {
     Meteor.call('nextRound', this._id);

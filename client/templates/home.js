@@ -7,7 +7,8 @@ Template.createGame.events({
     });
   },
   'click button[data-role="login"]': function(e, t) {
-    Meteor.loginWithGoogle();
+    //Meteor.loginWithGoogle();
+    Meteor.loginWithFacebook();
   }
 });
 

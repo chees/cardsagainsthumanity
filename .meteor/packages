@@ -4,7 +4,7 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-accounts-google
 moment
 iron:router
-
+accounts-ui
+accounts-facebook

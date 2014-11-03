@@ -1,6 +1,7 @@
 Template.layout.userPicture = function() {
   if (Meteor.user().services)
-    return Meteor.user().services.google.picture;
+    //return Meteor.user().services.google.picture;
+    return 'http://graph.facebook.com/' + Meteor.user().services.facebook.id + '/picture/?type=large';
   return '';
 };
 
