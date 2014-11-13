@@ -102,8 +102,11 @@ Template.game.events({
 
 
 Template.answers.shuffledAnswers = function() {
-  return _.map(this.shuffledAnswers, function(a) {
-    return {shuffledAnswer: a};
+  return _.map(_.compact(this.shuffledAnswers), function(a) {
+    return {
+      shuffledAnswer: a,
+      clazz: Session.get('selectedAnswer') === a ? '' : 'hidden'
+    }
   });
 };
 
@@ -117,6 +120,14 @@ Template.answers.czarName = function() {
 
 Template.answers.events({
   'click a': function(e, t) {
+    e.preventDefault();
+    if (Session.get('selectedAnswer') === this.shuffledAnswer) {
+      Session.set('selectedAnswer', null);
+    } else {
+      Session.set('selectedAnswer', this.shuffledAnswer);
+    }
+  },
+  'click button': function(e, t) {
     e.preventDefault();
     var gameId = t.data._id;
     Meteor.call('selectWinner', gameId, this.shuffledAnswer);

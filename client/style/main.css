@@ -173,7 +173,7 @@ footer {
   width: 100%;
 }
 
-.game .cardlist ul {
+.game ul.cardlist {
   list-style-type: none;
   padding: 0;
 }
@@ -197,36 +197,21 @@ footer {
   border-color: #fff;
   font-weight: normal;
 }
+.game .cardlist li:not(:first-child) {
+  margin-top: -10px;
+}
 .game .cardlist a {
   text-decoration: none;
   color: #222;  
   display: block;
 }
-.game .cardlist li:not(:first-child) {
-  margin-top: -10px;
+.czar .game .cardlist a {
+  color: #fff;
 }
 .game .cardlist button {
   width: 100%;
 }
 
-.game .readyStates {
-  display: flex;
-  flex-wrap: wrap;
-}
-.game .readyStates span {
-  border: 2px solid #222;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  margin: 40px 20px;
-  text-align: center;
-  line-height: 60px;
-  font-size: 24px;
-}
-.game .readyStates span .ready {
-  background-color: #222;
-  color: #fff;
-}
 .game .answers a {
   padding: 10px 0;
   line-height: 40px;

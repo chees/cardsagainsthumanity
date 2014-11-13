@@ -35,36 +35,18 @@
       <div class="question">{{question}}</div>
       {{#if isJoined}}
         {{#if isCzar}}
-          <div class="cardlist">
-            <ul>
-              {{#each nonCzarPlayers}}
-                {{#unless selectedAnswer}}
-                  <li class="pending">{{name}}</li>
-                {{/unless}}
-              {{/each}}
-              {{#each nonCzarPlayers}}
-                {{#if selectedAnswer}}
-                  <li>{{name}}</li>
-                {{/if}}
-              {{/each}}
-            </ul>
-          </div>
-
-          <!--
-          <div class="readyStates">
+          <ul class="cardlist">
+            {{#each nonCzarPlayers}}
+              {{#unless selectedAnswer}}
+                <li class="pending">{{name}}</li>
+              {{/unless}}
+            {{/each}}
             {{#each nonCzarPlayers}}
               {{#if selectedAnswer}}
-                <span class="ready">
-                  &#10003;
-                </span>
-              {{else}}
-                <span>
-                  {{initials}}
-                </span>
+                <li>{{name}}</li>
               {{/if}}
             {{/each}}
-          </div>
-          -->
+          </ul>
         {{else}}
           {{#if hasAnswered}}
             <div class="waiting">
@@ -109,25 +91,25 @@
 
 <template name="answers">
   <div>
+    <!--
     {{#if isCzar ..}}
       Pick the best answer:
+    {{else}}
+      Waiting for {{czarName}} to pick the best answer...
     {{/if}}
-    <ul class="answers">
+    -->
+    <ul class="cardlist">
       {{#each shuffledAnswers}}
-        {{#if shuffledAnswer}}
-          <li>
-            {{#if isCzar ..}}
-              <a href="#">{{shuffledAnswer}}</a>
-            {{else}}
-              {{shuffledAnswer}}
-            {{/if}}
-          </li>
-        {{/if}}
+        <li>
+          {{#if isCzar ..}}
+            <a href="#">{{shuffledAnswer}}</a>
+            <button class="{{clazz}} invert">This is the winner</button>
+          {{else}}
+            {{shuffledAnswer}}
+          {{/if}}
+        </li>
       {{/each}}
     </ul>
-    {{#unless isCzar ..}}
-      Waiting for {{czarName}} to pick the best answer...
-    {{/unless}}
   </div>
 </template>
 
