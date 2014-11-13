@@ -50,6 +50,13 @@ button .svgicon {
 button .svgicon + span {
   margin-left: -10px;
 }
+button.animate {
+  -webkit-transition: .1s linear;
+}
+button.collapse {
+  -webkit-transform: scaleY(0);
+  margin: -10px 0;
+}
 
 header {
   position: fixed;
@@ -249,18 +256,3 @@ footer {
 .rotate {
   -webkit-transform: rotate(-90deg);
 }
-/*
-.rotate {
-  -webkit-animation-duration: .3s;
-  -webkit-animation-name: rotate;
-  -webkit-animation-fill-mode: forwards;
-}
-@-webkit-keyframes rotate {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(-0.25turn);
-  }
-}
-*/

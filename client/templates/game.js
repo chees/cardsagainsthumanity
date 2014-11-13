@@ -105,7 +105,8 @@ Template.answers.shuffledAnswers = function() {
   return _.map(_.compact(this.shuffledAnswers), function(a) {
     return {
       shuffledAnswer: a,
-      clazz: Session.get('selectedAnswer') === a ? '' : 'hidden'
+      //clazz: Session.get('selectedAnswer') === a ? '' : 'hidden'
+      clazz: Session.get('selectedAnswer') === a ? '' : 'collapse'
     }
   });
 };
