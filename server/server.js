@@ -1,3 +1,20 @@
+// Routes for Google Managed VMs:
+Router.route('/_ah/health', {where: 'server'})
+  .get(function () {
+    this.response.end('ok');
+  });
+
+Router.route('/_ah/start', {where: 'server'})
+  .get(function () {
+    this.response.end('ok');
+  });
+
+Router.route('/_ah/stop', {where: 'server'})
+  .get(function () {
+    this.response.end('ok');
+  });
+
+
 Meteor.startup(function () {
   //Games.remove({});
 });
