@@ -35,6 +35,22 @@
       <div class="question">{{question}}</div>
       {{#if isJoined}}
         {{#if isCzar}}
+          <div class="cardlist">
+            <ul>
+              {{#each nonCzarPlayers}}
+                {{#unless selectedAnswer}}
+                  <li class="pending">{{name}}</li>
+                {{/unless}}
+              {{/each}}
+              {{#each nonCzarPlayers}}
+                {{#if selectedAnswer}}
+                  <li>{{name}}</li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+
+          <!--
           <div class="readyStates">
             {{#each nonCzarPlayers}}
               {{#if selectedAnswer}}
@@ -48,6 +64,7 @@
               {{/if}}
             {{/each}}
           </div>
+          -->
         {{else}}
           {{#if hasAnswered}}
             <div class="waiting">

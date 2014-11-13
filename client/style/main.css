@@ -172,6 +172,43 @@ footer {
 .game .hand button {
   width: 100%;
 }
+
+.game .cardlist ul {
+  list-style-type: none;
+  padding: 0;
+}
+.game .cardlist li {
+  background-color: #fff;
+  color: #222;
+  padding: 15px 15px 20px 15px;
+  border-radius: 10px 10px 0 0;
+  border: 3px solid #222;
+  font-weight: bold;
+  font-size: 18px;
+}
+.czar .game .cardlist li.pending {
+  background-color: #eee;
+  color: #222;
+  font-weight: bold;
+}
+.czar .game .cardlist li {
+  background-color: #222;
+  color: #fff;
+  border-color: #fff;
+  font-weight: normal;
+}
+.game .cardlist a {
+  text-decoration: none;
+  color: #222;  
+  display: block;
+}
+.game .cardlist li:not(:first-child) {
+  margin-top: -10px;
+}
+.game .cardlist button {
+  width: 100%;
+}
+
 .game .readyStates {
   display: flex;
   flex-wrap: wrap;
