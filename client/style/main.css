@@ -30,6 +30,7 @@ a:hover {
 }
 
 button {
+  display: block;
   margin: 10px 0;
   padding: 10px;
   background-color: #222;
@@ -54,8 +55,10 @@ button.animate {
   -webkit-transition: .1s linear;
 }
 button.collapse {
-  -webkit-transform: scaleY(0);
-  margin: -10px 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 header {
